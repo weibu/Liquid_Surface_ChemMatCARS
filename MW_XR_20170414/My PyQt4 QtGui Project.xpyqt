@@ -1,0 +1,40 @@
+<!DOCTYPE XUPProject>
+<!--
+###########################################################################################
+##      Created using Monkey Studio IDE v1.9.0.1 (1.9.0.1)
+##
+##  Author    : nayanbera <nayanbera@gmail.com>
+##  Project   : My PyQt4 QtGui Project
+##  FileName  : My PyQt4 QtGui Project.xpythonqt
+##  Date      : 2012-06-15T15:32:26
+##  License   : GPL
+##  Comment   : Creating using Monkey Studio RAD
+##  Home Page : $Home Page$
+##
+##  This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+##  WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+##
+###########################################################################################
+-->
+<project version="1.1.0" name="MW-XR">
+    <variable name="XUP.MAIN_FILE">
+        <value>main.py</value>
+    </variable>
+    <variable name="PYTHON_FILES">
+        <file>mainwindow.py</file>
+        <file>main.py</file>
+        <file>mca_routines.py</file>
+        <file>mpl2dwidget.py</file>
+        <file>mpl2Dwidget1.py</file>
+        <file>mplwidget.py</file>
+        <file>spec_routines.py</file>
+        <file>TwoDDetector.py</file>
+    </variable>
+    <variable name="FORMS">
+        <file>scanInfoDialog.ui</file>
+        <file>mainwindow.ui</file>
+        <file>g_l3Dialog.ui</file>
+        <file>absratioDialog.ui</file>
+        <file>g_l2Dialog.ui</file>
+    </variable>
+</project>
