@@ -35,7 +35,7 @@ class MainWindow (QMainWindow):
     def __init__ (self, parent = None):
         QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self)  
         self.pilatus=TwoDDetector('Pilatus')
         self.bruker=TwoDDetector('Bruker')
         np.seterr(invalid='ignore',divide='ignore')
