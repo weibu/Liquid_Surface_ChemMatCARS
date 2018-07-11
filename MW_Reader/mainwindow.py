@@ -94,14 +94,16 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.spLegendLocComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.connect(self.ui.spXComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.connect(self.ui.spYComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
+        self.connect(self.ui.spY2ComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.connect(self.ui.spNComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
+        self.connect(self.ui.spExportPushButton, SIGNAL('clicked()'),self.specSaveData)
         self.connect(self.ui.scansLineEdit, SIGNAL('returnPressed()'),self.scanListInputChanged)
         self.connect(self.ui.imageListWidget, SIGNAL('itemSelectionChanged()'),self.imageSelectedScanChanged)        
         self.connect(self.ui.mcaLogXCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
         self.connect(self.ui.mcaLogYCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
         self.connect(self.ui.mcaGridCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
         self.connect(self.ui.mcaLegendCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
-        self.connect(self.ui.mcaNormCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
+        self.connect(self.ui.mcaNormComboBox, SIGNAL('currentIndexChanged(int)'),self.updateMcaPlotData)
         self.connect(self.ui.mcaLegendLocComboBox, SIGNAL('currentIndexChanged(int)'),self.updateMcaPlotData)
         self.connect(self.ui.mcaCalibCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
         self.connect(self.ui.mcaCalibConLineEdit, SIGNAL('returnPressed()'),self.updateMcaPlotData)
@@ -179,10 +181,13 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.mcaOffsetLineEdit, SIGNAL('returnPressed()'),self.updateMcaPlotData)
         self.connect(self.ui.mcaFitPushButton, SIGNAL('clicked()'), self.mcaPeakFit)
         self.connect(self.ui.mcaFitAllPushButton, SIGNAL('clicked()'), self.mcaPeakFitAll)
+     #   self.connect(self.ui.mcaSumPushButton, SIGNAL('clicked()'), self.mcaSum)
+        self.connect(self.ui.mcaSumAllPushButton, SIGNAL('clicked()'), self.mcaSumAll)
         self.connect(self.ui.mcaAcceptPushButton, SIGNAL('clicked()'), self.mcaAcceptPeak)
-        self.connect(self.ui.mcaFrameCheckBox, SIGNAL('stateChanged(int)'), self.updateMcaInt)
-        self.connect(self.ui.mcaQzCheckBox, SIGNAL('stateChanged(int)'), self.updateMcaInt)
-        self.connect(self.ui.mcaEnergyCheckBox, SIGNAL('stateChanged(int)'), self.updateMcaInt)
+     #   self.connect(self.ui.mcaFrameCheckBox, SIGNAL('stateChanged(int)'), self.updateMcaInt)
+     #   self.connect(self.ui.mcaQzCheckBox, SIGNAL('stateChanged(int)'), self.updateMcaInt)
+     #   self.connect(self.ui.mcaEnergyCheckBox, SIGNAL('stateChanged(int)'), self.updateMcaInt)
+        self.connect(self.ui.mcaXAxisComboBox,SIGNAL('currentIndexChanged(int)'), self.updateMcaInt)
         self.connect(self.ui.mcaDelPushButton, SIGNAL('clicked()'), self.mcaDelIntData)
         self.connect(self.ui.mcaMergePushButton, SIGNAL('clicked()'), self.mcaIntMergeDia)
         self.connect(self.ui.mcaExportIntPushButton, SIGNAL('clicked()'), self.mcaSaveIntData)
@@ -288,6 +293,7 @@ class MainWindow (QMainWindow):
         self.disconnect(self.ui.refQzListWidget, SIGNAL('itemSelectionChanged()'),self.refQzListSelectionChanged)
         self.disconnect(self.ui.spXComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.disconnect(self.ui.spYComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
+        self.disconnect(self.ui.spY2ComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.disconnect(self.ui.spNComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.ui.imageListWidget.clear()
         self.ui.statusBar.clearMessage()
@@ -295,6 +301,7 @@ class MainWindow (QMainWindow):
         self.ui.specPlotMplWidget.canvas.ax.clear()
         self.ui.spXComboBox.clear()
         self.ui.spYComboBox.clear()
+        self.ui.spY2ComboBox.clear()
         self.ui.spNComboBox.clear()
         self.ui.mcaPlotMplWidget.canvas.ax.clear()
         self.ui.mcaPlotMplWidget.canvas.draw()
@@ -311,6 +318,7 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.refQzListWidget, SIGNAL('itemSelectionChanged()'),self.refQzListSelectionChanged)
         self.connect(self.ui.spXComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.connect(self.ui.spYComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
+        self.connect(self.ui.spY2ComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.connect(self.ui.spNComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
          
         
@@ -382,6 +390,7 @@ class MainWindow (QMainWindow):
         self.ui.imageListWidget.clear()
         self.disconnect(self.ui.spXComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.disconnect(self.ui.spYComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
+        self.disconnect(self.ui.spY2ComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.disconnect(self.ui.spNComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
         self.selectedScans=self.ui.scanListWidget.selectedItems()
         #self.selectedScanNums=[self.ui.scanListWidget.row(items) for items in self.selectedScans]
@@ -398,9 +407,12 @@ class MainWindow (QMainWindow):
         else:
             self.ui.spXComboBox.clear()
             self.ui.spYComboBox.clear()
+            self.ui.spY2ComboBox.clear()
             self.ui.spNComboBox.clear()
             self.ui.spXComboBox.addItems(self.specData[self.selectedScanNums[0]]['ScanVar'])
             self.ui.spYComboBox.addItems(self.specData[self.selectedScanNums[0]]['ScanVar'])
+            self.ui.spY2ComboBox.addItems(['None'])
+            self.ui.spY2ComboBox.addItems(self.specData[self.selectedScanNums[0]]['ScanVar'])
          #   ycol=self.ui.spYComboBox.findText(self.specData['YCol'])
          #   if ycol>0:
          #       self.ui.spYComboBox.setCurrentIndex(self.ui.spYComboBox.findText(self.specData['YCol']))
@@ -417,9 +429,11 @@ class MainWindow (QMainWindow):
             else: 
                 self.ui.spXComboBox.setCurrentIndex(0)
             self.ui.spYComboBox.setCurrentIndex(len(self.specData[self.selectedScanNums[0]]['ScanVar'])-1)
+            self.ui.spY2ComboBox.setCurrentIndex(0)
             self.ui.spNComboBox.setCurrentIndex(len(self.specData[self.selectedScanNums[0]]['ScanVar'])-2)
             self.connect(self.ui.spXComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
             self.connect(self.ui.spYComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
+            self.connect(self.ui.spY2ComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
             self.connect(self.ui.spNComboBox, SIGNAL('currentIndexChanged(int)'),self.updateSpecPlotData)
             try:
                 self.updateSpecPlotData()
@@ -478,8 +492,15 @@ class MainWindow (QMainWindow):
                 x=self.specData[i][str(self.ui.spXComboBox.currentText())]
                 y=self.specData[i][str(self.ui.spYComboBox.currentText())]
                 n=self.specData[i][str(self.ui.spNComboBox.currentText())]
-                self.label='S '+str(i)
-                self.specPlot(x,y,n)
+                if str(self.ui.spY2ComboBox.currentText())=='None':
+                    self.label='S '+str(i)
+                    self.specPlot(x,y,n)
+                else: 
+                    self.label='S '+str(i)+str(self.ui.spYComboBox.currentText())
+                    self.specPlot(x,y,n)
+                    y2=self.specData[i][str(self.ui.spY2ComboBox.currentText())]
+                    self.label='S '+str(i)+str(self.ui.spY2ComboBox.currentText())
+                    self.specPlot(x,y2,n)
             yerr=pl.sqrt(np.abs(y))
             if self.ui.spNCheckBox.checkState()!=0:
                 yerr=pl.sqrt(y/n**2+y**2/n**3)
@@ -513,7 +534,33 @@ class MainWindow (QMainWindow):
                 self.peakFWHM='0'
         self.specPlotSettings()
         self.ui.statusBar.showMessage('Done')
-         
+        
+    def specSaveData(self):
+        self.saveFileName=str(QFileDialog.getSaveFileName(caption='Save SPEC scans', directory=self.directory))
+        for i in self.selectedScanNums:
+            x=self.specData[i][str(self.ui.spXComboBox.currentText())]
+            y=self.specData[i][str(self.ui.spYComboBox.currentText())]
+            n=self.specData[i][str(self.ui.spNComboBox.currentText())]
+            yerr=pl.sqrt(y)
+            self.fname=self.saveFileName+'_'+str(i)+'_'+str(self.ui.spXComboBox.currentText())+'_'+str(self.ui.spYComboBox.currentText())+'.txt'
+            if self.ui.spNCheckBox.checkState()!=0:
+                yerr=pl.sqrt(y/n**2+y**2/n**3)
+                y=y/n
+                self.fname=self.saveFileName+'_'+str(i)+'_'+str(self.ui.spXComboBox.currentText())+'_'+str(self.ui.spYComboBox.currentText())+'_'+str(self.ui.spNComboBox.currentText())+'.txt'
+            specscandata=[[x[j],y[j],yerr[j]] for j in range(len(x))]
+            np.savetxt(self.fname,specscandata,fmt='%.4f\t%.4e\t%.4e')
+            if str(self.ui.spY2ComboBox.currentText())!='None':
+                y2=self.specData[i][str(self.ui.spY2ComboBox.currentText())]
+                yer2r=pl.sqrt(y2)
+                self.fname=self.saveFileName+'_'+str(i)+'_'+str(self.ui.spXComboBox.currentText())+'_'+str(self.ui.spY2ComboBox.currentText())+'.txt'
+                if self.ui.spNCheckBox.checkState()!=0:
+                    yerr2=pl.sqrt(y2/n**2+y2**2/n**3)
+                    y2=y2/n
+                    self.fname=self.saveFileName+'_'+str(i)+'_'+str(self.ui.spXComboBox.currentText())+'_'+str(self.ui.spY2ComboBox.currentText())+'_'+str(self.ui.spNComboBox.currentText())+'.txt'
+                specscandata=[[x[j],y2[j],yerr[j]] for j in range(len(x))]
+                np.savetxt(self.fname,specscandata,fmt='%.4f\t%.4e\t%.4e')
+            
+            
     def specPlotSettings(self):
         self.spLogX=self.ui.spLogXCheckBox.checkState()
         self.spLogY=self.ui.spLogYCheckBox.checkState()
@@ -522,6 +569,10 @@ class MainWindow (QMainWindow):
         self.ui.specPlotMplWidget.canvas.ax.set_yscale('linear')
         self.ui.specPlotMplWidget.canvas.ax.set_xlabel(str(self.ui.spXComboBox.currentText()))
         self.ui.specPlotMplWidget.canvas.ax.set_ylabel(str(self.ui.spYComboBox.currentText()))
+        if str(self.ui.spY2ComboBox.currentText())=='None':
+            self.ui.specPlotMplWidget.canvas.ax.set_ylabel(str(self.ui.spYComboBox.currentText()))
+        else:
+            self.ui.specPlotMplWidget.canvas.ax.set_ylabel(str(self.ui.spYComboBox.currentText())+' and '+str(self.ui.spY2ComboBox.currentText()))
         self.ui.specPlotMplWidget.canvas.ax.grid(b=False)
         if self.spLogX!=0:
             self.ui.specPlotMplWidget.canvas.ax.set_xscale('log')
@@ -637,9 +688,15 @@ class MainWindow (QMainWindow):
             lin=float(self.ui.mcaCalibLinLineEdit.text())
             qua=float(self.ui.mcaCalibQuaLineEdit.text())
             x=con+lin*x+qua*x**2
-            n=self.mcaData[i]['Monc']*pl.ones_like(y)
-            tc=self.mcaPar[i]['Time'][1]/self.mcaPar[i]['Time'][2]  #real count time correction
-            self.nomMcaData[i]=np.vstack((x,y/n*tc,pl.sqrt(y+y**2/n)/n*tc)).transpose()
+            if str(self.ui.mcaNormComboBox.currentText())!='None':
+                monitor=str(self.ui.mcaNormComboBox.currentText())
+                n=self.mcaData[i][monitor]
+                tc=self.mcaPar[i]['Time'][1]/self.mcaPar[i]['Time'][2]  #real count time correction
+                self.nomMcaData[i]=np.vstack((x,y/n*tc,pl.sqrt(y+y**2/n)/n*tc)).transpose()
+            else:
+                n=1
+                tc=1
+                self.nomMcaData[i]=np.vstack((x,y,pl.sqrt(y))).transpose()
             self.mcaLabel=str(i+1)+' Qz='+'%.4f'%self.mcaPar[i]['Q'][2]
             if self.ui.mcaOffsetCheckBox.checkState()!=0:
                 fact=fact*float(self.ui.mcaOffsetLineEdit.text())
@@ -648,10 +705,11 @@ class MainWindow (QMainWindow):
         self.ui.statusBar.showMessage('Done')
         
     def mcaPlot(self,x,y,n,tc,fact):
-        yerr=pl.sqrt(y)
-        if self.ui.mcaNormCheckBox.checkState()!=0:
+        if str(self.ui.mcaNormComboBox.currentText())!='None':
             yerr=pl.sqrt(y+y**2/n)/n*tc
-            y=y/n*tc
+        else:
+            yerr=pl.sqrt(y)
+        y=y/n*tc
         self.ui.mcaPlotMplWidget.canvas.ax.errorbar(x,fact*y,fact*yerr,label=self.mcaLabel,fmt='o-')
 
         
@@ -698,87 +756,117 @@ class MainWindow (QMainWindow):
         self.mcafitallstatus=1
         self.peakFit()
  
-    def mcaAcceptPeak(self,num=0): #accecpt the fitting result, save the data, and update the mca integral plot 
-        if self.ui.mcaFrameCheckBox.checkState()+self.ui.mcaQzCheckBox.checkState()+self.ui.mcaEnergyCheckBox.checkState()!=2:
-            self.messageBox('Warning:: Please select only one X axis!!')
-        else:
-            frame=self.selectedMcaScanNums[num]+1
-            qc=self.mcaPar[self.selectedMcaScanNums[num]]['Q'][2]
+    def mcaSum(self):  # sum one selected spectrum with given range
+        data=self.nomMcaData[self.selectedMcaScanNums[0]]
+        ini=max(float(str(self.ui.mcaRanLineEdit.text()).split(':')[0]),data[0][0])
+        fin=min(float(str(self.ui.mcaRanLineEdit.text()).split(':')[1]),data[-1][0])        
+        print ini, fin
+        dataran=np.where((np.logical_and(data[0:]<=fin,data[0:]>=ini)))
+        print dataran[0]
+        newdata=data[dataran[0][0]:dataran[0][-1]+1]
+        print newdata
+        print np.sum(newdata[:,1]), np.sqrt(np.sum(newdata[:,2]**2))
+    
+    def mcaSumAll(self):  #sum all selected spectrum with given range
+        self.mcaIntData=[]
+        self.ui.mcaDataListWidget.clear()
+        for i in range(len(self.selectedMcaScanNums)):
+            data=self.nomMcaData[self.selectedMcaScanNums[i]]
+            ini=max(float(str(self.ui.mcaRanLineEdit.text()).split(':')[0]),data[0][0])
+            fin=min(float(str(self.ui.mcaRanLineEdit.text()).split(':')[1]),data[-1][0])     
+            dataran=np.where((np.logical_and(data[0:]<=fin,data[0:]>=ini)))
+            newdata=data[dataran[0][0]:dataran[0][-1]+1]
+            frame=self.selectedMcaScanNums[i]+1
+            qz=self.mcaPar[self.selectedMcaScanNums[i]]['Q'][2]
             try:
-                energy=self.mcaPar[self.selectedMcaScanNums[num]]['Energy']
+                energy=self.mcaPar[self.selectedMcaScanNums[i]]['Energy']
             except:
-                energy=10
-           # print self.fitpeakpara
-            inten=self.fitpeakpara[0][1]*self.fitpeakpara[0][2]
-            error=np.sqrt(self.fitpeakpara[0][1]**2*self.fiterror[2]**2+self.fitpeakpara[0][2]**2*self.fiterror[1]**2)
-           # print frame, qc, energy, inten, error
-            self.mcaIntData.append([frame, qc, energy, inten, error])
-            if self.ui.mcaFrameCheckBox.checkState()!=0:
+                energy=10.0
+            inten=np.sum(newdata[:,1])
+            error=np.sqrt(np.sum(newdata[:,2]**2))
+            #print newdata, inten, error
+            self.mcaIntData.append([frame, qz, energy, inten, error])
+            if self.ui.mcaXAxisComboBox.currentIndex()==0:
                 string=str(int(frame))+'\t'+'%.4e'%inten+'\t'+'%.4e'%error 
-            elif self.ui.mcaQzCheckBox.checkState()!=0:
-                string='%.4f'%qc+'\t'+'%.4e'%inten+'\t'+'%.4e'%error
+            elif self.ui.mcaXAxisComboBox.currentIndex()==1:
+                string='%.4f'%qz+'\t'+'%.4e'%inten+'\t'+'%.4e'%error
             else:
                 string='%.4f'%energy+'\t'+'%.4e'%inten+'\t'+'%.4e'%error
             self.ui.mcaDataListWidget.addItem(string)
             self.updateMcaIntPlot()
+            self.command='Flu Sum, scans=['+str([item for item in np.sort(self.selectedScanNums)])[1:-1]+'], energy range=['+str(ini)+':'+str(fin)+']' 
+            self.ui.commandLineEdit.setText(self.command)
+    
+    
+    def mcaAcceptPeak(self,num=0): #accecpt the fitting result, save the data, and update the mca integral plot 
+        frame=self.selectedMcaScanNums[num]+1
+        qc=self.mcaPar[self.selectedMcaScanNums[num]]['Q'][2]
+        try:
+            energy=self.mcaPar[self.selectedMcaScanNums[num]]['Energy']
+        except:
+            energy=10
+       # print self.fitpeakpara
+        inten=self.fitpeakpara[0][1]*self.fitpeakpara[0][2]
+        error=np.sqrt(self.fitpeakpara[0][1]**2*self.fiterror[2]**2+self.fitpeakpara[0][2]**2*self.fiterror[1]**2)
+       # print frame, qc, energy, inten, error
+        self.mcaIntData.append([frame, qc, energy, inten, error])
+        if self.ui.mcaXAxisComboBox.currentIndex()==0:
+            string=str(int(frame))+'\t'+'%.4e'%inten+'\t'+'%.4e'%error 
+        elif self.ui.mcaXAxisComboBox.currentIndex()==1:
+            string='%.4f'%qz+'\t'+'%.4e'%inten+'\t'+'%.4e'%error
+        else:
+            string='%.4f'%energy+'\t'+'%.4e'%inten+'\t'+'%.4e'%error
+        self.ui.mcaDataListWidget.addItem(string)
+        self.updateMcaIntPlot()
         
     def updateMcaIntPlot(self):
-        if self.ui.mcaFrameCheckBox.checkState()+self.ui.mcaQzCheckBox.checkState()+self.ui.mcaEnergyCheckBox.checkState()!=2:
-            self.messageBox('Warning:: Please select only one X axis!!')
-        else:            
-            self.ui.mcaIntPlotMplWidget.canvas.ax.clear()
-            self.ui.mcaIntPlotMplWidget.canvas.ax.set_ylabel('Integral Intensity')
-            try:
-                data=np.array(self.mcaIntData)
-                y=data[:,3]
-                yerr=data[:,4]
-                if self.ui.mcaFrameCheckBox.checkState()!=0:
-                    x=data[:,0]
-                    self.ui.mcaIntPlotMplWidget.canvas.ax.set_xlabel('Frame')
-                elif self.ui.mcaQzCheckBox.checkState()!=0:
-                    x=data[:,1]
-                    self.ui.mcaIntPlotMplWidget.canvas.ax.set_xlabel(r'$Q_z$'+' '+r'$[\AA^{-1}]$')
-                else:
-                    x=data[:,2]
-                    self.ui.mcaIntPlotMplWidget.canvas.ax.set_xlabel('Energy (keV)')
-                self.ui.mcaIntPlotMplWidget.canvas.ax.errorbar(x,y,yerr,fmt='o',label='#0')
-            except:
-                self.messageBox('no mca integral data to process.')
-            if len(self.selectedmcafiles_rows)!=0: #plot the loaded mca int data
-                for i in range(len(self.selectedmcafiles_rows)):
-                    data1=np.loadtxt(str(self.mcafiles[self.selectedmcafiles_rows[i]]),comments='#')
-                    self.ui.mcaIntPlotMplWidget.canvas.ax.errorbar(data1[:,0],data1[:,1],data1[:,2],fmt='o',label='#'+str(self.selectedmcafiles_rows[i]+1))
-            self.ui.mcaIntPlotMplWidget.canvas.ax.legend(loc=2,frameon=False,scatterpoints=0,numpoints=1)
-            self.ui.mcaIntPlotMplWidget.canvas.draw()
+        self.ui.mcaIntPlotMplWidget.canvas.ax.clear()
+        self.ui.mcaIntPlotMplWidget.canvas.ax.set_ylabel('Integral Intensity')
+        try:
+            data=np.array(self.mcaIntData)
+            y=data[:,3]
+            yerr=data[:,4]
+            if self.ui.mcaXAxisComboBox.currentIndex()==0:
+                x=data[:,0]
+                self.ui.mcaIntPlotMplWidget.canvas.ax.set_xlabel('Frame')
+            elif self.ui.mcaXAxisComboBox.currentIndex()==1:
+                x=data[:,1]
+                self.ui.mcaIntPlotMplWidget.canvas.ax.set_xlabel(r'$Q_z$'+' '+r'$[\AA^{-1}]$')
+            else:
+                x=data[:,2]
+                self.ui.mcaIntPlotMplWidget.canvas.ax.set_xlabel('Energy (keV)')
+            self.ui.mcaIntPlotMplWidget.canvas.ax.errorbar(x,y,yerr,fmt='o',label='#0')
+        except:
+            self.messageBox('no mca integral data to process.')
+        if len(self.selectedmcafiles_rows)!=0: #plot the loaded mca int data
+            for i in range(len(self.selectedmcafiles_rows)):
+                data1=np.loadtxt(str(self.mcafiles[self.selectedmcafiles_rows[i]]),comments='#')
+                self.ui.mcaIntPlotMplWidget.canvas.ax.errorbar(data1[:,0],data1[:,1],data1[:,2],fmt='o',label='#'+str(self.selectedmcafiles_rows[i]+1))
+        self.ui.mcaIntPlotMplWidget.canvas.ax.legend(loc=2,frameon=False,scatterpoints=0,numpoints=1)
+        self.ui.mcaIntPlotMplWidget.canvas.draw()
     
     def updateMcaInt(self):
-        if self.ui.mcaFrameCheckBox.checkState()+self.ui.mcaQzCheckBox.checkState()+self.ui.mcaEnergyCheckBox.checkState()!=2:
-            self.messageBox('Warning:: Please select only one X axis!!')
-        else:
-            try:
-                self.ui.mcaDataListWidget.clear()
-                for i in range(len(self.mcaIntData)):
-                    if self.ui.mcaFrameCheckBox.checkState()!=0:
-                        string=str(self.mcaIntData[i][0])+'\t'+'%.4e'%self.mcaIntData[i][3]+'\t'+'%.4e'%self.mcaIntData[i][4] 
-                    elif self.ui.mcaQzCheckBox.checkState()!=0:
-                        string='%.4f'%self.mcaIntData[i][1]+'\t'+'%.4e'%self.mcaIntData[i][3]+'\t'+'%.4e'%self.mcaIntData[i][4]
-                    else:
-                        string='%.4f'%self.mcaIntData[i][2]+'\t'+'%.4e'%self.mcaIntData[i][3]+'\t'+'%.4e'%self.mcaIntData[i][4]
-                    self.ui.mcaDataListWidget.addItem(string)
-                self.updateMcaIntPlot()
-            except:
-                self.messageBox('no mca integral data to process.')
+        try:
+            self.ui.mcaDataListWidget.clear()
+            for i in range(len(self.mcaIntData)):
+                if self.ui.mcaXAxisComboBox.currentIndex()==0:
+                    string=str(self.mcaIntData[i][0])+'\t'+'%.4e'%self.mcaIntData[i][3]+'\t'+'%.4e'%self.mcaIntData[i][4] 
+                elif self.ui.mcaXAxisComboBox.currentIndex()==1:
+                    string='%.4f'%self.mcaIntData[i][1]+'\t'+'%.4e'%self.mcaIntData[i][3]+'\t'+'%.4e'%self.mcaIntData[i][4]
+                else:
+                    string='%.4f'%self.mcaIntData[i][2]+'\t'+'%.4e'%self.mcaIntData[i][3]+'\t'+'%.4e'%self.mcaIntData[i][4]
+                self.ui.mcaDataListWidget.addItem(string)
+            self.updateMcaIntPlot()
+        except:
+            self.messageBox('no mca integral data to process.')
                 
     def mcaIntMergeDia(self):
-        if self.ui.mcaFrameCheckBox.checkState()+self.ui.mcaQzCheckBox.checkState()+self.ui.mcaEnergyCheckBox.checkState()!=2:
-            self.messageBox('Warning:: Please select only one X axis!!')
-        else:
-            Dialog=QDialog(self)
-            self.uimcamerge=uic.loadUi('mcamerge.ui', Dialog)
-            self.uimcamerge.label.setText('Please provide the resolution of x')
-            self.uimcamerge.show()
-            self.connect(self.uimcamerge.cancelPushButton, SIGNAL('clicked()'), self.mcaMergeDiaClose)
-            self.connect(self.uimcamerge.okPushButton, SIGNAL('clicked()'), self.mcaIntMerge)
+        Dialog=QDialog(self)
+        self.uimcamerge=uic.loadUi('mcamerge.ui', Dialog)
+        self.uimcamerge.label.setText('Please provide the resolution of x')
+        self.uimcamerge.show()
+        self.connect(self.uimcamerge.cancelPushButton, SIGNAL('clicked()'), self.mcaMergeDiaClose)
+        self.connect(self.uimcamerge.okPushButton, SIGNAL('clicked()'), self.mcaIntMerge)
             
     def mcaMergeDiaClose(self):
         self.uimcamerge.close()
@@ -787,9 +875,9 @@ class MainWindow (QMainWindow):
     def mcaIntMerge(self):
         resolution=float(self.uimcamerge.resLineEdit.text())
         try:
-            if self.ui.mcaFrameCheckBox.checkState()!=0:
+            if self.ui.mcaXAxisComboBox.currentIndex()==0:
                 index=0
-            elif self.ui.mcaQzCheckBox.checkState()!=0:
+            elif self.ui.mcaXAxisComboBox.currentIndex()==1:
                 index=1
             else:
                 index=2
@@ -827,10 +915,14 @@ class MainWindow (QMainWindow):
         try:
             self.saveFileName=str(QFileDialog.getSaveFileName(caption='Save Fluorescence Integral Data',directory=self.directory))
             fid=open(self.saveFileName+'_flu.txt','w')
+            try:
+                fid.write('#'+str(self.command)+'\n')
+            except:
+                pass
             for i in range(len(self.mcaIntData)):
-                if self.ui.mcaFrameCheckBox.checkState()!=0:
+                if self.ui.mcaXAxisComboBox.currentIndex()==0:
                     fid.write(str(self.mcaIntData[i][0])+'\t'+str(self.mcaIntData[i][3])+'\t'+str(self.mcaIntData[i][4])+'\n')
-                elif self.ui.mcaQzCheckBox.checkState()!=0:
+                elif self.ui.mcaXAxisComboBox.currentIndex()==1:
                     fid.write(str(self.mcaIntData[i][1])+'\t'+str(self.mcaIntData[i][3])+'\t'+str(self.mcaIntData[i][4])+'\n')
                 else:
                     fid.write(str(self.mcaIntData[i][2])+'\t'+str(self.mcaIntData[i][3])+'\t'+str(self.mcaIntData[i][4])+'\n')
@@ -4396,9 +4488,6 @@ class MainWindow (QMainWindow):
 #            self.ui.PlotMplWidget.canvas.ax.plot(x0,self.peakfitdatay,'r-')
 #            self.ui.PlotMplWidget.canvas.draw()
         elif self.mcafitstatus!=0 and self.mcafitallstatus==0:
-            self.disconnect(self.ui.mcaNormCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
-            self.ui.mcaNormCheckBox.setCheckState(2)
-            self.connect(self.ui.mcaNormCheckBox, SIGNAL('stateChanged(int)'),self.updateMcaPlotData)
             self.mcafitplotstatus=1
             self.updateMcaPlotData()
         else:

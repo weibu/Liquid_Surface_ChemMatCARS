@@ -45,6 +45,11 @@ class mcaread:
                     if line[:5]=='#Monc':
                         tmppar=line[5:].split()
                         self.Data[i]['Monc']=eval(tmppar[0])
+                        try: # When running for Hutch B and D
+                            self.Data[i]['Monb']=eval(tmppar[1])
+                            self.Data[i]['Mond']=eval(tmppar[2])
+                        except:
+                            pass
                     if line[:2]=='#Q':
                         tmppar=line[2:].split()
                         self.Par[i]['Q']=map(eval, tmppar)

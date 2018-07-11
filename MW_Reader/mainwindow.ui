@@ -257,7 +257,7 @@
       </widget>
       <widget class="QTabWidget" name="PlotWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>4</number>
        </property>
        <widget class="QWidget" name="specPlotTab">
         <attribute name="title">
@@ -292,12 +292,35 @@
            <item>
             <widget class="QLabel" name="spYLabel">
              <property name="text">
-              <string>Y:</string>
+              <string>Y1:</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QComboBox" name="spYComboBox"/>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_52">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="spYLabel_2">
+             <property name="text">
+              <string>Y2:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="spY2ComboBox"/>
            </item>
            <item>
             <spacer name="horizontalSpacer_4">
@@ -462,6 +485,29 @@
                <string>center</string>
               </property>
              </item>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_51">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="spExportPushButton">
+             <property name="text">
+              <string>Export</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -2578,10 +2624,34 @@ p, li { white-space: pre-wrap; }
               </spacer>
              </item>
              <item>
-              <widget class="QCheckBox" name="mcaNormCheckBox">
+              <widget class="QLabel" name="label_34">
                <property name="text">
-                <string>Norm</string>
+                <string>Normalized by</string>
                </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="mcaNormComboBox">
+               <item>
+                <property name="text">
+                 <string>Monc</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Monb</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Mond</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>None</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -2732,46 +2802,6 @@ p, li { white-space: pre-wrap; }
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_35">
-             <item>
-              <widget class="QLabel" name="label_24">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>X-axis</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="mcaFrameCheckBox">
-               <property name="text">
-                <string>Frame</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="mcaQzCheckBox">
-               <property name="text">
-                <string>Qz</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="mcaEnergyCheckBox">
-               <property name="text">
-                <string>Energy</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_37">
              <item>
               <widget class="QPushButton" name="mcaFitPushButton">
@@ -2790,11 +2820,128 @@ p, li { white-space: pre-wrap; }
             </layout>
            </item>
            <item>
-            <widget class="QPushButton" name="mcaAcceptPushButton">
-             <property name="text">
-              <string>Accept</string>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_52">
+             <item>
+              <widget class="QPushButton" name="mcaSumAllPushButton">
+               <property name="text">
+                <string>Sum All</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_49">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_33">
+               <property name="text">
+                <string>Range:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="mcaRanLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>1:1000</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_35">
+             <item>
+              <widget class="QPushButton" name="mcaAcceptPushButton">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Accept</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_50">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_24">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>X-axis</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="mcaXAxisComboBox">
+               <item>
+                <property name="text">
+                 <string>Frame</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Qz</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Energy</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_38">
