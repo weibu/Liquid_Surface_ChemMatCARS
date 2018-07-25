@@ -707,7 +707,10 @@ class MainWindow (QMainWindow):
             sld=0
             for i in range(len(sigma)):
                 sld=sld+math.erf(erfx[i])*(y[i+1]-y[i])
-            wholesld.append((sld+y[0]+y[-1])/2)
+            if (sld+y[0]+y[-1])/2<0:
+                wholesld.append(0)
+            else:
+                wholesld.append((sld+y[0]+y[-1])/2)
         return wholesld
         
     def saveRef(self):
