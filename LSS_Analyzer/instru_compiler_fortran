@@ -1,0 +1,1 @@
+f2py -c --compiler=mingw32 --fcompiler=gnu95 xr_ref.pyf xr_ref.f90

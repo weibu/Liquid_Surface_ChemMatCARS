@@ -1,0 +1,41 @@
+<!DOCTYPE XUPProject>
+<!--
+###########################################################################################
+##		Created using Monkey Studio IDE v1.8.4.0 (1.8.4.0)
+##
+##	Author    : Mrinal Kanti Bera <nayanbera@gmail.com>, Wei Bu <weibu1977@gmail.com>
+##	Project   : MW-XReader
+##	FileName  : MW-XReader.xpythonqt
+##	Date      : 2012-03-30T13:15:17
+##	License   : GPL
+##	Comment   : A software developed to read and analyse X-ray scattering data collected using SPEC and different Detectors
+##	Home Page   : http://www.mydomain.org
+##
+##	This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+##	WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+##
+###########################################################################################
+-->
+<project version="1.1.0" name="MW-XReader">
+    <scope nested="false" name="XUPProjectSettings">
+        <variable operator="=" name="EDITOR" multiline="false">
+            <value content="PyQt"/>
+        </variable>
+    </scope>
+    <variable operator="=" name="PYTHON_FILES" multiline="true">
+        <file content="main.py"/>
+        <file content="mca_routines.py"/>
+        <file content="mpl2dwidget.py"/>
+        <file content="mplwidget.py"/>
+        <file content="spec_routines.py"/>
+        <file content="TwoDDetector.py"/>
+        <file content="mainwindow.py"/>
+    </variable>
+    <variable operator="+=" name="FORMS" multiline="true">
+        <file content="mainwindow.ui"/>
+        <file content="scanInfoDialog.ui"/>
+	<file content="g_l2Dialog.ui"/>
+	<file content="g_l3Dialog.ui"/>
+	<file content="absratioDialog.ui"/>
+    </variable>
+</project>
