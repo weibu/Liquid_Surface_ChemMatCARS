@@ -62,6 +62,7 @@ class MainWindow (QMainWindow):
         self.ui.PlotWidget.setCurrentIndex(0)
         self.directory=os.getcwd()
         self.pilGIDshow=0
+        self.pilGISAXSshow=0
         self.pilmovieindex=0
         self.refpatchindex=0
         self.formfactor_r=0
@@ -70,6 +71,8 @@ class MainWindow (QMainWindow):
         self.mcafitstatus=0
         self.mcafitallstatus=0
         self.cutDirItems=['H Cut', 'V Cut', 'Qz Cut', 'Qxy Cut']
+        self.ui.pilCutDirComboBox.clear()
+        self.ui.pilCutDirComboBox.addItems(self.cutDirItems)
         self.plotfiles=[]
         self.twodplotfiles=[]
         self.halftab='      '
@@ -1000,6 +1003,7 @@ class MainWindow (QMainWindow):
     def imageSelectedScanChanged(self):
         #self.ui.imageSelectAllCheckBox.setCheckState(0)
         self.pilGIDshow=0
+        self.pilGISAXSshow=0
         self.ui.statusBar.showMessage('Plotting....Wait!!')
         if  self.specPar[self.selectedScanNums[0]]['Detector']=='Vortex':
             self.mcaSelectedScanChanged()
@@ -1246,8 +1250,6 @@ class MainWindow (QMainWindow):
         #        self.disconnect=(self.ui.gidComboBox, SIGNAL('currentIndexChanged(int)'), self.pilGID)
 #        self.ui.gidComboBox.setCurrentIndex(0)
 #        self.connect=(self.ui.gidComboBox, SIGNAL('currentIndexChanged(int)'), self.pilGID)
-        self.ui.pilCutDirComboBox.clear()
-        self.ui.pilCutDirComboBox.addItems(self.cutDirItems)
         bad_pix=int(self.ui.pilBPCfacLineEdit.text())
         self.ui.statusBar.clearMessage()
         self.selectedPilFrames=self.ui.imageListWidget.selectedItems()
@@ -1562,7 +1564,7 @@ class MainWindow (QMainWindow):
         
     def updatePilPlotData(self):
         aspect=str(self.ui.pilAspectComboBox.currentText())
-        if self.pilGIDshow==0 and len(self.selectedPilFramesNums)!=0:
+        if self.pilGIDshow==0 and self.pilGISAXSshow==0 and len(self.selectedPilFramesNums)!=0:
             if len(self.selectedPilFramesNums)>10 and self.ui.gixSumCheckBox.checkState()<1:
                 #self.messageBox("The number of selected frames are more than 10. So plotting only first 10 images")
                 N=10
@@ -1717,6 +1719,8 @@ class MainWindow (QMainWindow):
                 self.ui.pilMplWidget.canvas.draw()
         elif self.pilGIDshow!=0 and len(self.selectedPilFramesNums)!=0:            
             self.pilGIDPlot()
+        elif self.pilGISAXSshow!=0 and len(self.selectedPilFramesNums)!=0:
+            self.showPilGISAXS()
             
     def pilMovieShow(self):
         self.disconnect(self.ui.pilAxesComboBox, SIGNAL('currentIndexChanged(int)'), self.update2dPlots)
@@ -1987,6 +1991,8 @@ class MainWindow (QMainWindow):
             self.savePilGISAXS()
 
     def showPilGISAXS(self):
+        self.pilGISAXSshow=1
+        self.pilGIDshow=0
         if len(self.selectedPilFramesNums)!=1 and self.ui.gixSumCheckBox.checkState()==0:
             self.messageBox('Warning: Please select only one frame or use summed frames')
         else:
@@ -2055,6 +2061,9 @@ class MainWindow (QMainWindow):
             else:
                 p = ax.imshow(self.pilDataBin, interpolation='bicubic', extent=self.extent, vmax=vmax, vmin=vmin, cmap=cmap,aspect=aspect, origin='lower')
                 self.Zdata = self.pilDataBin
+            ax.set_aspect(aspect)
+            ax.set_title("GISAXS")
+            ax.format_coord=self.format_pil_coord
             self.ui.pilMplWidget.canvas.fig.colorbar(p)
             self.ui.pilMplWidget.canvas.fig.tight_layout()
             self.ui.pilMplWidget.canvas.fig.subplots_adjust(top=0.9)
@@ -2153,6 +2162,7 @@ class MainWindow (QMainWindow):
                 self.ui.pilAxesComboBox.setCurrentIndex(2)
             self.connect(self.ui.pilAxesComboBox, SIGNAL('currentIndexChanged(int)'), self.update2dPlots)
         self.pilGIDshow=1
+        self.pilGISAXSshow=0
         self.ui.pilMplWidget.canvas.fig.clf()
         self.pilxleft=self.xcenter-(float(self.ui.pilHSlitLineEdit.text())-1)/2
         self.pilxright=self.xcenter+(float(self.ui.pilHSlitLineEdit.text())-1)/2
@@ -3716,7 +3726,8 @@ class MainWindow (QMainWindow):
         if self.det=='Bruker':
             self.updateCcdCutData()
         elif self.det=='Pilatus':
-            if self.pilGIDshow==0:
+            print self.pilGIDshow, self.pilGISAXSshow
+            if self.pilGIDshow==0 and self.pilGISAXSshow==0:
                 self.updatePilCutData()
             else:
                 self.updatePilGIDCutData()
@@ -3898,17 +3909,31 @@ class MainWindow (QMainWindow):
                 fin=np.where(self.pilGIDXAxs[0,:]<=end)[0][-1]
                 xaxis=self.pilGIDYAxs[:,0]
                 self.cutData=np.vstack((xaxis,np.sum(self.pilGIDData[:,ini:fin],axis=1),np.sqrt(np.sum(self.pilGIDDataErr[:,ini:fin]**2,axis=1)))).transpose()
-        elif str(self.ui.pilAxesComboBox.currentText())=='Q':  
-            if str(self.ui.pilCutDirComboBox.currentText())=='H Cut':
-                ini=np.where(self.pilGIDYAxs_Q[:,0]>=start)[0][0]
-                fin=np.where(self.pilGIDYAxs_Q[:,0]<=end)[0][-1]
-                xaxis=self.pilGIDXAxs_Q[0,:]
-                self.cutData=np.vstack((xaxis,np.sum(self.pilGIDData_Q[ini:fin,:],axis=0),np.sqrt(np.sum(self.pilGIDDataErr_Q[ini:fin,:]**2,axis=0)))).transpose()
-            elif str(self.ui.pilCutDirComboBox.currentText())=='V Cut':
-                ini=np.where(self.pilGIDXAxs_Q[0,:]>=start)[0][0]
-                fin=np.where(self.pilGIDXAxs_Q[0,:]<=end)[0][-1]
-                xaxis=self.pilGIDYAxs_Q[:,0]
-                self.cutData=np.vstack((xaxis,np.sum(self.pilGIDData_Q[:,ini:fin],axis=1),np.sqrt(np.sum(self.pilGIDDataErr_Q[:,ini:fin]**2,axis=1)))).transpose()
+        elif str(self.ui.pilAxesComboBox.currentText())=='Q':
+            if self.pilGISAXSshow==0:
+                if str(self.ui.pilCutDirComboBox.currentText())=='H Cut':
+                    ini=np.where(self.pilGIDYAxs_Q[:,0]>=start)[0][0]
+                    fin=np.where(self.pilGIDYAxs_Q[:,0]<=end)[0][-1]
+                    xaxis=self.pilGIDXAxs_Q[0,:]
+                    self.cutData=np.vstack((xaxis,np.sum(self.pilGIDData_Q[ini:fin,:],axis=0),np.sqrt(np.sum(self.pilGIDDataErr_Q[ini:fin,:]**2,axis=0)))).transpose()
+                elif str(self.ui.pilCutDirComboBox.currentText())=='V Cut':
+                    ini=np.where(self.pilGIDXAxs_Q[0,:]>=start)[0][0]
+                    fin=np.where(self.pilGIDXAxs_Q[0,:]<=end)[0][-1]
+                    xaxis=self.pilGIDYAxs_Q[:,0]
+                    self.cutData=np.vstack((xaxis,np.sum(self.pilGIDData_Q[:,ini:fin],axis=1),np.sqrt(np.sum(self.pilGIDDataErr_Q[:,ini:fin]**2,axis=1)))).transpose()
+            else:
+                print 'I am here'
+                if str(self.ui.pilCutDirComboBox.currentText())=='H Cut':
+                    ini=np.where(self.pilYbin[:,0]>=start)[0][0]
+                    fin=np.where(self.pilYbin[:,0]<=end)[0][-1]
+                    print ini, fin
+                    xaxis=self.pilXbin[0,:]
+                    self.cutData=np.vstack((xaxis,np.sum(self.pilDataBin[ini:fin,:],axis=0),np.sqrt(np.sum(self.pilErrorDataBin[ini:fin,:]**2,axis=0)))).transpose()
+                elif str(self.ui.pilCutDirComboBox.currentText())=='V Cut':
+                    ini=np.where(self.pilXbin[0,:]>=start)[0][0]
+                    fin=np.where(self.pilXbin[0,:]<=end)[0][-1]
+                    xaxis=self.pilYbin[:,0]
+                    self.cutData=np.vstack((xaxis,np.sum(self.pilDataBin[:,ini:fin],axis=1),np.sqrt(np.sum(self.pilErrorDataBin[:,ini:fin]**2,axis=1)))).transpose()
         if self.ui.cutErrorbarCheckBox.checkState()!=0:
             self.ui.cutPlotMplWidget.canvas.ax.errorbar(self.cutData[:,0],self.cutData[:,1],self.cutData[:,2],fmt='b-',label='GID Cut')
         else:
@@ -3964,7 +3989,7 @@ class MainWindow (QMainWindow):
                     self.fname=self.saveFileName+str(self.ui.imageListWidget.item(i).text().split('\t')[0])+'_'+str(self.ui.imageListWidget.item(i).text().split('\t')[1])+'_cut.txt'
                     np.savetxt(self.fname,self.cutData[i],fmt='%.4f\t%.4e\t%.4e')
         elif self.det=='Pilatus':
-            if self.pilGIDshow==0:
+            if self.pilGIDshow==0 and self.pilGISAXSshow==0:
                 if self.ui.gixSumCheckBox.checkState()!=0:
                     self.fname=self.saveFileName+str(self.ui.imageListWidget.item(0).text().split('\t')[0])+'_sumcut.txt'
                     np.savetxt(self.fname,self.cutData[-1],fmt='%.4f\t%.4e\t%.4e')
