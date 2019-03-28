@@ -87,6 +87,8 @@ class MainWindow (QMainWindow):
         self.ui.flusurunitlabel.setText(u'\u212b'+u'\u207b'+u'\u00b2')
         self.ui.flurhotopunitlabel.setText('e/'+u'\u212b'+u'\u00b3')
         self.ui.flurhobotunitlabel.setText('e/'+u'\u212b'+u'\u00b3')
+        self.ui.flurelrhobotunitlabel.setText('e/' + u'\u212b' + u'\u00b3')
+        self.ui.fluqcunitlabel.setText(u'\u212b' + u'\u207b' + u'\u00b9')
         self.ui.fluqofflabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')  
         self.ui.flurhotoplabel.setText(u'\u03c1'+'_top')
         self.ui.flurhobotlabel.setText(u'\u03c1'+'_bot')
@@ -180,6 +182,7 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.insflusubPB, SIGNAL('clicked()'), self.insFluIon)
         self.connect(self.ui.rmflusubPB, SIGNAL('clicked()'), self.rmFluIon)
         self.connect(self.ui.calfluCB, SIGNAL('stateChanged(int)'),self.updateFluCal)
+        self.connect(self.ui.flushoqcCB, SIGNAL('stateChanged(int)'),self.updateFluPlot)
         self.connect(self.ui.flusurLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.fluqoffLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.fluyscaleLE,SIGNAL('returnPressed()'),self.updateFluCal)
@@ -191,6 +194,10 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.flusaveCB, SIGNAL('activated(int)'), self.saveFlu)
         self.connect(self.ui.fluloadCB, SIGNAL('activated(int)'), self.loadFlu) 
         self.connect(self.ui.fluscalePB, SIGNAL('clicked()'),self.setFluPlotScale)
+        self.connect(self.ui.flubulLE, SIGNAL('returnPressed()'), self.updateFluQc)
+        self.connect(self.ui.flurhobotLE, SIGNAL('returnPressed()'), self.updateFluQc)
+        self.connect(self.ui.flurhotopLE, SIGNAL('returnPressed()'), self.updateFluQc)
+        self.connect(self.ui.flusubTW,SIGNAL('cellChanged(int,int)'), self.updateFluQc)
         #gixos analysis
         self.connect(self.ui.action_Open_GIX_file, SIGNAL('triggered()'),self.openGixFile)
         self.connect(self.ui.addgixfilePB, SIGNAL('clicked()'),self.addGixFile)
@@ -1792,6 +1799,7 @@ class MainWindow (QMainWindow):
         for i in range(len(self.fluparaname)):
             self.flupara[i]=[float(self.uifluLE[i].text()), False, None, None]  
         self.updateFluElement()
+        self.updateFluQc()
             
     def openFluFile(self):  #open flu files and also remove all current ref files in the listwidget
         f=QFileDialog.getOpenFileNames(caption='Select Multiple Fluorescence Files to import', directory=self.directory, filter='Flu Files (*.flu*;*_flu.txt)')
@@ -1875,6 +1883,8 @@ class MainWindow (QMainWindow):
                 self.ui.fluPW.canvas.ax.errorbar(data1[:,0]*self.flufitscale[i][0]+self.flufitscale[i][1],data1[:,1]*self.flufitscale[i][2]+self.flufitscale[i][3],fmt='-',label='#'+str(self.selectedflufitfiles_rows[i]+1))
         if  self.ui.calfluCB.checkState()!=0:
                 self.ui.fluPW.canvas.ax.errorbar(np.array(self.flucal)[:,0],np.array(self.flucal)[:,1],fmt='-', label='cal')
+        if self.ui.flushoqcCB.checkState()!=0:
+            self.ui.fluPW.canvas.ax.axvline(x=self.fluqc-float(self.ui.fluqoffLE.text()), linestyle='dashed', label='qc', color='k')
         if self.ui.flulegendCB.checkState()!=0:
             self.ui.fluPW.canvas.ax.legend(loc=self.ui.flulegendlocCoB.currentIndex()+1,frameon=False,scatterpoints=0,numpoints=1)
         if self.ui.flulogyCB.checkState()!=0:
@@ -1948,15 +1958,22 @@ class MainWindow (QMainWindow):
         self.flutopbet=float(self.ui.flubetatopLE.text()) 
         flubotbeta=float(self.ui.flubetabotLE.text())   # beta of water for incident beam 
         flubotbeta2=float(self.ui.flubetabot2LE.text())   # beta of water for flurescenct beam 
-        toprho=(1-volume)*float(self.ui.flurhobotLE.text())+numele/1e27
-        self.flubotdel=self.eleradius*2*np.pi/k0/k0*toprho
+        self.botrho=(1-volume)*float(self.ui.flurhobotLE.text())+numele/1e27
+        self.flubotdel=self.eleradius*2*np.pi/k0/k0*self.botrho
       #  print beta, beta1
         self.flubotbeta=beta+(1-volume)*flubotbeta  #beta =3.462e-10 for water at 20keV
         self.flubotmu1=2*k1*(beta1+(1-volume)*flubotbeta2)  #beta= 1.24492e-9 for water at 14.148keV; mu for the emission line
         self.fluqc=2*np.sqrt(2)*k0*np.sqrt(self.flubotdel-self.flutopdel)  #get qc
+    #    print self.fluqc, self.toprho
       #  print volume, toprho            
       #  print self.fluelepara
-        
+
+    def updateFluQc(self):
+        self.updateFluElement()
+        self.ui.flurelrhobotLE.setText(format(self.botrho, '.4f'))
+        self.ui.fluqcLE.setText(format(self.fluqc, '.4f'))
+
+
     def insFluIon(self):  # add one ion in the subphase
         insrows=self.ui.flusubTW.selectionModel().selectedRows()
         insrows=[self.ui.flusubTW.row(self.ui.flusubTW.itemFromIndex(insrows[i])) for i in range(len(insrows))]
