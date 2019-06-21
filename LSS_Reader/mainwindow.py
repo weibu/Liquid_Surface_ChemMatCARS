@@ -25,7 +25,7 @@ import sys
 import matplotlib as mpl
 from lmfit import minimize, Parameters, Parameter, report_fit, fit_report
 from functools import partial
-from TwoD_Integrate import integrate_2d
+#from TwoD_Integrate import integrate_2d
 
 
 (Ui_MainWindow, QMainWindow) = uic.loadUiType('mainwindow.ui')
