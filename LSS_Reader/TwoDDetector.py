@@ -55,8 +55,8 @@ class TwoDDetector:
             self.NCOLS=im.size[1]
             self.hroi=[0, self.NCOLS-1]
             self.vroi=[0, self.NROWS-1]
-            print self.NCOLS, self.NROWS
-            print self.hroi, self.vroi
+           # print self.NCOLS, self.NROWS
+           # print self.hroi, self.vroi
         elif self.det=='Bruker':
             # Reading Bruker Image File #
             try:

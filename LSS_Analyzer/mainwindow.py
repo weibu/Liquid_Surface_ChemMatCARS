@@ -1553,12 +1553,12 @@ class MainWindow (QMainWindow):
                 f1=complex(q2[i],0)
                 trans=4*abs(f1/(f1+fmax))*abs(f1/(f1+fmax))
                 if self.ui.rodlipidCB.checkState()!=0:
-                    formfac=special.sph_jn(0,q1[i]*size/2)[0][0]*special.sph_jn(0,q1[i]*size/2)[0][0] #use Bessel function here.
+                    formfac=special.spherical_jn(0,q1[i]*size/2)*special.spherical_jn(0,q1[i]*size/2)#use Bessel function here.
                 else:
                     if sizeres==0:
-                        formfac=9*(special.sph_jn(1,q3[i]*size)[0][1]/(q3[i]*size))**2
+                        formfac=9*(special.spherical_jn(1,q3[i]*size)/(q3[i]*size))**2
                     else:
-                        formfac=quad(lambda t: 9*(special.sph_jn(1,q3[i]*t)[0][1]/(q3[i]*t))**2*np.exp(-(t-size)**2/2/sizeres**2), size-2.82*sizeres, size+2.82*sizeres)[0]/np.sqrt(2*np.pi)/sizeres
+                        formfac=quad(lambda t: 9*(special.spherical_jn(1,q3[i]*t)/(q3[i]*t))**2*np.exp(-(t-size)**2/2/sizeres**2), size-2.82*sizeres, size+2.82*sizeres)[0]/np.sqrt(2*np.pi)/sizeres
                 rod.append(trans*formfac*yscale*np.exp(-q1[i]**2*roughness**2)+bgcon+bglin*q1[i])
         return rod
                 
