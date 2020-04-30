@@ -67,7 +67,7 @@ class MainWindow (QMainWindow):
         self.eleradius=periodictable.constants.electron_radius*1e10
         self.avoganum=periodictable.constants.avogadro_number
         self.boltzmann=1.38065e-23
-        mpl.rc('axes',color_cycle=['b','r','g','c','m','y','k'])
+        # mpl.rc('axes',color_cycle=['b','r','g','c','m','y','k'])
         self.ui.refPW.canvas.ax.set_xlabel(r'$Q_z$'+' '+r'$[\AA^{-1}]$')
         self.ui.refPW.canvas.ax.set_ylabel('Normalized Reflectivity')
         self.ui.refsldPW.canvas.ax.set_xlabel('Z'+' '+r'$[\AA]$')
@@ -646,23 +646,28 @@ class MainWindow (QMainWindow):
         theta=x/2/k0   # convert q to theta
         length=np.sum(d)+4*(sigma[0]+sigma[-1]) # total length of inner slabs plus 4 times rougness for both sides
         steps=int(length/slab) # each sliced box has thickness of ~ 0.25 \AA
-        xsld=np.linspace(-4*sigma[0],np.sum(d)+4*sigma[-1],steps) # get the x-axis for sld
+        sd = length / steps  # thickness for each slab
+        xsld=np.linspace(-4*sigma[0]+sd/2,np.sum(d)+4*sigma[-1]-sd/2,steps) # get the x-axis for sld
         intrho=self.sldCalFun(d,rho,sigma,xsld)
         intmu=self.sldCalFun(d,mu,sigma,xsld)
-        sd=length/steps # thickness for each slab
+
         sdel=[]
         sbet=[] 
        # t0=time.time()
-        sdel.append(erad*2.0*np.pi/k0/k0*rho[0]) # delta for the top phase
+        #sdel.append(erad*2.0*np.pi/k0/k0*rho[0]) # delta for the top phase
+        sdel.append(rho[0])
         sbet.append(mu[0]/2/k0/1e8)        # beta for the top phase
-        sdel=sdel+[intrho[i]*erad*2.0*np.pi/k0/k0 for i in range(len(intrho))] # add delta for the interface
+        #sdel=sdel+[intrho[i]*erad*2.0*np.pi/k0/k0 for i in range(len(intrho))] # add delta for the interface
+        sdel=sdel+intrho
         sbet=sbet+[intmu[i]/2/k0/1e8 for i in range(len(intmu))] # add beta for the interface
-        sdel.append(erad*2.0*np.pi/k0/k0*rho[-1])  # delta for the bottom phase
+        #sdel.append(erad*2.0*np.pi/k0/k0*rho[-1])  # delta for the bottom phase
+        sdel.append(rho[-1])
         sbet.append(mu[-1]/2/k0/1e8)    # beta for the bottom phase         
-        d=slab*np.ones_like(sdel)
+        d=sd*np.ones_like(sdel)
+        #print sd, steps, len(xsld), xsld[1]-xsld[0], len(xsld)*sd, len(xsld)*slab
         lamda=2*np.pi/k0
-        fdel=erad*2.0*np.pi/k0/k0
-        sdelf=np.array(sdel)/fdel
+        #fdel=erad*2.0*np.pi/k0/k0
+        sdelf=np.array(sdel)
         #t1=time.time()
         #print 't1-t0=',t1-t0
         ref,refr=xr.parratt(x+qoff,lamda,d,sdelf,sbet)
@@ -2670,10 +2675,11 @@ class MainWindow (QMainWindow):
       #  delbeta=np.sqrt((ftprint*np.sin(beta))**2+float(self.ui.gixoutsliLE.text()))  #get the delta beta
         length=np.sum(d)+4*(sigma[0]+sigma[-1]) # total length of inner slabs plus 4 times rougness for both sides
         steps=int(length/slab) # each sliced box has thickness of ~ 0.25 \AA
-        xsld=np.linspace(-4*sigma[0],np.sum(d)+4*sigma[-1],steps) # get the x-axis for sld
+        sd = length / steps  # thickness for each slab
+        xsld = np.linspace(-4 * sigma[0] + sd / 2, np.sum(d) + 4 * sigma[-1] - sd / 2, steps) # get the x-axis for sld
         intrho=self.sldCalFun(d,rho,sigma,xsld)
         intmu=self.sldCalFun(d,mu,sigma,xsld)
-        sd=length/steps # thickness for each slab
+
         sdel=[]
         sbet=[] 
         sdel.append(erad*2.0*np.pi/k0/k0*rho[0]) # delta for the top phase
@@ -2682,7 +2688,7 @@ class MainWindow (QMainWindow):
         sbet=sbet+[intmu[i]/2/k0/1e8 for i in range(len(intmu))] # add beta for the interface
         sdel.append(erad*2.0*np.pi/k0/k0*rho[-1])  # delta for the bottom phase
         sbet.append(mu[-1]/2/k0/1e8)    # beta for the bottom phase         
-        d=slab*np.ones_like(sdel)
+        d=sd*np.ones_like(sdel)
         lamda=2*np.pi/k0
         fdel=erad*2.0*np.pi/k0/k0
         sdelf=np.array(sdel)/fdel

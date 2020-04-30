@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1190</width>
-    <height>937</height>
+    <width>2250</width>
+    <height>1729</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="reflectivitytab">
        <attribute name="title">
@@ -60,7 +60,7 @@
              <widget class="QListWidget" name="reffileLW">
               <property name="maximumSize">
                <size>
-                <width>269</width>
+                <width>500</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -124,7 +124,7 @@
              <widget class="QListWidget" name="reffitfileLW">
               <property name="maximumSize">
                <size>
-                <width>269</width>
+                <width>500</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -178,7 +178,7 @@
              <widget class="QListWidget" name="refedfileLW">
               <property name="maximumSize">
                <size>
-                <width>269</width>
+                <width>500</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -241,7 +241,7 @@
                <widget class="QPushButton" name="refscalePB">
                 <property name="maximumSize">
                  <size>
-                  <width>75</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -287,7 +287,7 @@
                <widget class="QCheckBox" name="reflegendCB">
                 <property name="maximumSize">
                  <size>
-                  <width>58</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -298,9 +298,15 @@
               </item>
               <item>
                <widget class="QComboBox" name="reflegendlocCoB">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>88</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -377,7 +383,7 @@
                <widget class="QPushButton" name="refedscalePB">
                 <property name="maximumSize">
                  <size>
-                  <width>75</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -403,7 +409,7 @@
                <widget class="QCheckBox" name="refedlegendCB">
                 <property name="maximumSize">
                  <size>
-                  <width>58</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -414,9 +420,15 @@
               </item>
               <item>
                <widget class="QComboBox" name="refedlegendlocCoB">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>88</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -525,7 +537,7 @@
                <widget class="QLabel" name="refqofflabel">
                 <property name="maximumSize">
                  <size>
-                  <width>20</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -540,7 +552,7 @@
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
+                 <enum>QSizePolicy::Preferred</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -610,7 +622,7 @@
                <widget class="QLabel" name="refqreslabel">
                 <property name="maximumSize">
                  <size>
-                  <width>20</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -625,7 +637,7 @@
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
+                 <enum>QSizePolicy::Preferred</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -704,7 +716,14 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="refnumslabSB"/>
+               <widget class="QSpinBox" name="refnumslabSB">
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
               </item>
               <item>
                <spacer name="horizontalSpacer_2">
@@ -712,7 +731,7 @@
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
+                 <enum>QSizePolicy::Preferred</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -734,9 +753,15 @@
               </item>
               <item>
                <widget class="QCheckBox" name="refrrfCB">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>50</width>
+                  <width>200</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -762,7 +787,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>75</width>
+                  <width>90</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -777,7 +802,7 @@
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
+                 <enum>QSizePolicy::Preferred</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -791,7 +816,7 @@
                <widget class="QPushButton" name="rmrefslabPB">
                 <property name="maximumSize">
                  <size>
-                  <width>75</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -806,7 +831,7 @@
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
+                 <enum>QSizePolicy::Preferred</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -820,7 +845,7 @@
                <widget class="QPushButton" name="clerefconPB">
                 <property name="maximumSize">
                  <size>
-                  <width>87</width>
+                  <width>150</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -834,15 +859,15 @@
             <item>
              <widget class="QTableWidget" name="refparTW">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="maximumSize">
                <size>
-                <width>400</width>
-                <height>200</height>
+                <width>800</width>
+                <height>400</height>
                </size>
               </property>
               <property name="tabKeyNavigation">
@@ -861,7 +886,7 @@
                <bool>false</bool>
               </attribute>
               <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>80</number>
+               <number>160</number>
               </attribute>
               <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                <bool>false</bool>
@@ -967,7 +992,7 @@
                <widget class="QLabel" name="label">
                 <property name="maximumSize">
                  <size>
-                  <width>51</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -986,7 +1011,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>80</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -999,7 +1024,7 @@
                <widget class="QLabel" name="label_2">
                 <property name="maximumSize">
                  <size>
-                  <width>31</width>
+                  <width>90</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1018,7 +1043,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>50</width>
+                  <width>80</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1031,7 +1056,7 @@
                <widget class="QLabel" name="label_27">
                 <property name="maximumSize">
                  <size>
-                  <width>41</width>
+                  <width>90</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1042,9 +1067,15 @@
               </item>
               <item>
                <widget class="QComboBox" name="referrCB">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>110</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1083,6 +1114,12 @@
               </item>
               <item>
                <widget class="QComboBox" name="refsaveCB">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <item>
                  <property name="text">
                   <string>Save</string>
@@ -1117,6 +1154,12 @@
               </item>
               <item>
                <widget class="QComboBox" name="refloadCB">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <item>
                  <property name="text">
                   <string>Load</string>
@@ -5498,8 +5541,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1190</width>
-     <height>21</height>
+     <width>2250</width>
+     <height>47</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

@@ -77,7 +77,7 @@ class MainWindow (QMainWindow):
         self.twodplotfiles=[]
         self.halftab='      '
         self.xyzformat='x=%.3f,y=%.3f,z=%.2e'
-        mpl.rc('axes',color_cycle=['b','r','g','c','m','y','k'])
+        # mpl.rc('axes',color_cycle=['b','r','g','c','m','y','k'])
         self.ui.plotMoveUpPushButton.setIcon(QIcon('arrow_up.png'))
         self.ui.plotMoveDownPushButton.setIcon(QIcon('arrow_down.png'))        
         self.connect(self.ui.actionAbout, SIGNAL('triggered()'),self.showAbout)
