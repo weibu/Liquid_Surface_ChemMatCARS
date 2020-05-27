@@ -25,6 +25,7 @@ import periodictable
 from periodictable import *
 
 
+
 (Ui_MainWindow, QMainWindow) = uic.loadUiType('mainwindow.ui')
 
 class MainWindow (QMainWindow):
