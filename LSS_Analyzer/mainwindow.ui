@@ -28,7 +28,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="reflectivitytab">
        <attribute name="title">
@@ -1709,7 +1709,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>dth</string>
+                 <string>q_xy</string>
                 </property>
                </widget>
               </item>
@@ -1733,7 +1733,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_8">
+               <widget class="QLabel" name="roddthunitlabel">
                 <property name="maximumSize">
                  <size>
                   <width>40</width>

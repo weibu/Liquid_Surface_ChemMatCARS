@@ -76,7 +76,8 @@ class MainWindow (QMainWindow):
         self.ui.refqreslabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')
         self.ui.rodrhounitlabel.setText('e/'+u'\u212b'+u'\u00b3')
         self.ui.rodalphalabel.setText('angle('+u'\u03B1'+')')
-        self.ui.roddthlabel.setText('2'+u'\u03B8')
+        self.ui.roddthlabel.setText('Qxy')
+        self.ui.roddthunitlabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')
         self.ui.rodqofflabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')
         self.ui.rodsizelabel.setText(u'\u212b')
         self.ui.rodsizereslabel.setText(u'\u212b')
@@ -1534,14 +1535,16 @@ class MainWindow (QMainWindow):
         bgcon=rodpara[4]
         bglin=rodpara[5]
         roughness=rodpara[6]
-        dth=float(self.ui.roddthLE.text())/180*np.pi  #out-of-plane angle in rad
+        #dth=float(self.ui.roddthLE.text())/180*np.pi  #out-of-plane angle in rad
+        qxy=float(self.ui.roddthLE.text())
         alpha=float(self.ui.rodalphaLE.text())/180*np.pi  #incident angle in rad
         k0=2*np.pi*float(self.ui.rodxenLE.text())/12.3984 # wave vector
         q1=x+qoff  #used for formfactor and roughness calculation   
         q2=np.array(x+qoff-k0*np.sin(alpha)) #used tansmission calculation
        # beta=np.arcsin(q2/k0)  #outgoing angle in rad
-        beta=[np.arcsin(q2[i]/k0) for i in range(len(q2))]
-        q3=k0*np.sqrt(2+2*np.sin(alpha)*np.sin(beta)-2*np.cos(alpha)*np.cos(beta)*np.cos(dth))  #total q for NP formfactor calculation
+        #beta=[np.arcsin(q2[i]/k0) for i in range(len(q2))]
+        #q3=k0*np.sqrt(2+2*np.sin(alpha)*np.sin(beta)-2*np.cos(alpha)*np.cos(beta)*np.cos(dth))  #total q for NP formfactor calculation
+        q3=np.sqrt(q1*q1+qxy*qxy)
         erad=self.eleradius   # classic electron radius
         qc=2*np.sqrt(np.pi*erad*float(self.ui.rodrhoLE.text())) # half critical q for tansmission calculation
         rod=[] #return value
@@ -1696,7 +1699,7 @@ class MainWindow (QMainWindow):
         fid.write('Xray_energy\t'+format(float(self.ui.rodxenLE.text()),'.3f')+'\n')
         fid.write('Rho_subphase\t'+format(float(self.ui.rodrhoLE.text()),'.3f')+'\n')
         fid.write('Angle_alpha\t'+format(float(self.ui.rodalphaLE.text()),'.4f')+'\n')
-        fid.write('Angle_dth\t'+format(float(self.ui.roddthLE.text()),'.3f')+'\n')
+        fid.write('Q_xy\t'+format(float(self.ui.roddthLE.text()),'.3f')+'\n')
         fid.close()    
     
     def loadRod(self):
