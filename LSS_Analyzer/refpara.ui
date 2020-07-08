@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>150</height>
+    <width>650</width>
+    <height>301</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,17 +18,17 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>300</width>
-    <height>150</height>
+    <width>16777215</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_4">
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -38,8 +38,8 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>361</width>
-         <height>16777215</height>
+         <width>16777215</width>
+         <height>100</height>
         </size>
        </property>
        <property name="font">
@@ -52,7 +52,7 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="1" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QCheckBox" name="minCB">
@@ -75,7 +75,7 @@
        </item>
       </layout>
      </item>
-     <item>
+     <item row="2" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QCheckBox" name="maxCB">
@@ -98,7 +98,7 @@
        </item>
       </layout>
      </item>
-     <item>
+     <item row="3" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QPushButton" name="cancelPB">

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
-    <height>311</height>
+    <width>1049</width>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,6 +62,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
               <widget class="QCheckBox" name="qoffminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -74,9 +80,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="qoffminLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -91,6 +103,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
               <widget class="QCheckBox" name="qoffmaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -103,9 +121,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="qoffmaxLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -156,6 +180,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
               <widget class="QCheckBox" name="yscaleminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -168,9 +198,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="yscaleminLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -185,6 +221,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
               <widget class="QCheckBox" name="yscalemaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -197,9 +239,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="yscalemaxLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -238,6 +286,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
               <widget class="QCheckBox" name="sizeminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -250,9 +304,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="sizeminLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -267,6 +327,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
               <widget class="QCheckBox" name="sizemaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -279,9 +345,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="sizemaxLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -332,6 +404,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_9">
              <item>
               <widget class="QCheckBox" name="sizeresminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -344,9 +422,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="sizeresminLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -361,6 +445,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_10">
              <item>
               <widget class="QCheckBox" name="sizeresmaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -373,9 +463,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="sizeresmaxLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -414,6 +510,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
               <widget class="QCheckBox" name="bgconminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -428,7 +530,7 @@
               <widget class="QLineEdit" name="bgconminLE">
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -443,6 +545,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
               <widget class="QCheckBox" name="bgconmaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -455,9 +563,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="bgconmaxLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -508,6 +622,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_22">
              <item>
               <widget class="QCheckBox" name="bglinminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -520,9 +640,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="bglinminLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -537,6 +663,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_23">
              <item>
               <widget class="QCheckBox" name="bglinmaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -549,9 +681,15 @@
              </item>
              <item>
               <widget class="QLineEdit" name="bglinmaxLE">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -590,6 +728,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_13">
              <item>
               <widget class="QCheckBox" name="roughminCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -604,7 +748,7 @@
               <widget class="QLineEdit" name="roughminLE">
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -619,6 +763,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
               <widget class="QCheckBox" name="roughmaxCB">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
@@ -633,7 +783,7 @@
               <widget class="QLineEdit" name="roughmaxLE">
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>

@@ -25,7 +25,7 @@ import sys
 import matplotlib as mpl
 from lmfit import minimize, Parameters, Parameter, report_fit, fit_report
 from functools import partial
-from TwoD_Integrate import integrate_2d
+#from TwoD_Integrate import integrate_2d
 
 
 (Ui_MainWindow, QMainWindow) = uic.loadUiType('mainwindow.ui')
@@ -763,16 +763,16 @@ class MainWindow (QMainWindow):
         self.mcafitallstatus=1
         self.peakFit()
  
-    def mcaSum(self):  # sum one selected spectrum with given range
-        data=self.nomMcaData[self.selectedMcaScanNums[0]]
-        ini=max(float(str(self.ui.mcaRanLineEdit.text()).split(':')[0]),data[0][0])
-        fin=min(float(str(self.ui.mcaRanLineEdit.text()).split(':')[1]),data[-1][0])        
-        print ini, fin
-        dataran=np.where((np.logical_and(data[0:]<=fin,data[0:]>=ini)))
-        print dataran[0]
-        newdata=data[dataran[0][0]:dataran[0][-1]+1]
-        print newdata
-        print np.sum(newdata[:,1]), np.sqrt(np.sum(newdata[:,2]**2))
+    # def mcaSum(self):  # sum one selected spectrum with given range
+    #     data=self.nomMcaData[self.selectedMcaScanNums[0]]
+    #     ini=max(float(str(self.ui.mcaRanLineEdit.text()).split(':')[0]),data[0][0])
+    #     fin=min(float(str(self.ui.mcaRanLineEdit.text()).split(':')[1]),data[-1][0])
+    #     print ini, fin
+    #     dataran=np.where((np.logical_and(data[0:]<=fin,data[0:]>=ini)))
+    #     print dataran[0]
+    #     newdata=data[dataran[0][0]:dataran[0][-1]+1]
+    #     print newdata
+    #     print np.sum(newdata[:,1]), np.sqrt(np.sum(newdata[:,2]**2))
     
     def mcaSumAll(self):  #sum all selected spectrum with given range
         self.mcaIntData=[]
@@ -781,7 +781,7 @@ class MainWindow (QMainWindow):
             data=self.nomMcaData[self.selectedMcaScanNums[i]]
             ini=max(float(str(self.ui.mcaRanLineEdit.text()).split(':')[0]),data[0][0])
             fin=min(float(str(self.ui.mcaRanLineEdit.text()).split(':')[1]),data[-1][0])     
-            dataran=np.where((np.logical_and(data[0:]<=fin,data[0:]>=ini)))
+            dataran=np.where((np.logical_and(data[:,0]<=fin,data[:,0]>=ini)))
             newdata=data[dataran[0][0]:dataran[0][-1]+1]
             frame=self.selectedMcaScanNums[i]+1
             qz=self.mcaPar[self.selectedMcaScanNums[i]]['Q'][2]

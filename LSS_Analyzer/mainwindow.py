@@ -67,7 +67,7 @@ class MainWindow (QMainWindow):
         self.eleradius=periodictable.constants.electron_radius*1e10
         self.avoganum=periodictable.constants.avogadro_number
         self.boltzmann=1.38065e-23
-        # mpl.rc('axes',color_cycle=['b','r','g','c','m','y','k'])
+        mpl.rc('axes',color_cycle=['b','r','g','c','m','y','k'])
         self.ui.refPW.canvas.ax.set_xlabel(r'$Q_z$'+' '+r'$[\AA^{-1}]$')
         self.ui.refPW.canvas.ax.set_ylabel('Normalized Reflectivity')
         self.ui.refsldPW.canvas.ax.set_xlabel('Z'+' '+r'$[\AA]$')
@@ -189,15 +189,22 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.fluconLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.flulinLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.flusurcurLE,SIGNAL('returnPressed()'),self.updateFluCal)
+        self.connect(self.ui.flusubTW, SIGNAL('cellChanged(int,int)'), self.updateFluCal)
+        self.connect(self.ui.flubulLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flurhobotLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flurhotopLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.fluxenLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flufluenLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flubetatopLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flubetabotLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flubetabot2LE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.flusliLE, SIGNAL('returnPressed()'), self.updateFluCal)
+        self.connect(self.ui.fludetLE, SIGNAL('returnPressed()'), self.updateFluCal)
         self.connect(self.ui.flufitPB,SIGNAL('clicked()'),self.fitFlu)
         self.connect(self.ui.fluconsPB, SIGNAL('clicked()'),self.updateFluPara)
         self.connect(self.ui.flusaveCB, SIGNAL('activated(int)'), self.saveFlu)
         self.connect(self.ui.fluloadCB, SIGNAL('activated(int)'), self.loadFlu) 
         self.connect(self.ui.fluscalePB, SIGNAL('clicked()'),self.setFluPlotScale)
-        self.connect(self.ui.flubulLE, SIGNAL('returnPressed()'), self.updateFluQc)
-        self.connect(self.ui.flurhobotLE, SIGNAL('returnPressed()'), self.updateFluQc)
-        self.connect(self.ui.flurhotopLE, SIGNAL('returnPressed()'), self.updateFluQc)
-        self.connect(self.ui.flusubTW,SIGNAL('cellChanged(int,int)'), self.updateFluQc)
         #gixos analysis
         self.connect(self.ui.action_Open_GIX_file, SIGNAL('triggered()'),self.openGixFile)
         self.connect(self.ui.addgixfilePB, SIGNAL('clicked()'),self.addGixFile)
@@ -652,21 +659,16 @@ class MainWindow (QMainWindow):
         intmu=self.sldCalFun(d,mu,sigma,xsld)
 
         sdel=[]
-        sbet=[] 
+        sbet=[]
        # t0=time.time()
-        #sdel.append(erad*2.0*np.pi/k0/k0*rho[0]) # delta for the top phase
-        sdel.append(rho[0])
+        sdel.append(rho[0]) # delta for the top phase
         sbet.append(mu[0]/2/k0/1e8)        # beta for the top phase
-        #sdel=sdel+[intrho[i]*erad*2.0*np.pi/k0/k0 for i in range(len(intrho))] # add delta for the interface
-        sdel=sdel+intrho
+        sdel=sdel+intrho # add delta for the interface
         sbet=sbet+[intmu[i]/2/k0/1e8 for i in range(len(intmu))] # add beta for the interface
-        #sdel.append(erad*2.0*np.pi/k0/k0*rho[-1])  # delta for the bottom phase
-        sdel.append(rho[-1])
+        sdel.append(rho[-1])  # delta for the bottom phase
         sbet.append(mu[-1]/2/k0/1e8)    # beta for the bottom phase         
         d=sd*np.ones_like(sdel)
-        #print sd, steps, len(xsld), xsld[1]-xsld[0], len(xsld)*sd, len(xsld)*slab
         lamda=2*np.pi/k0
-        #fdel=erad*2.0*np.pi/k0/k0
         sdelf=np.array(sdel)
         #t1=time.time()
         #print 't1-t0=',t1-t0
@@ -1539,14 +1541,16 @@ class MainWindow (QMainWindow):
         bgcon=rodpara[4]
         bglin=rodpara[5]
         roughness=rodpara[6]
-        dth=float(self.ui.roddthLE.text())/180*np.pi  #out-of-plane angle in rad
+        #dth=float(self.ui.roddthLE.text())/180*np.pi  #out-of-plane angle in rad
+        qxy=float(self.ui.roddthLE.text())
         alpha=float(self.ui.rodalphaLE.text())/180*np.pi  #incident angle in rad
         k0=2*np.pi*float(self.ui.rodxenLE.text())/12.3984 # wave vector
         q1=x+qoff  #used for formfactor and roughness calculation   
         q2=np.array(x+qoff-k0*np.sin(alpha)) #used tansmission calculation
        # beta=np.arcsin(q2/k0)  #outgoing angle in rad
-        beta=[np.arcsin(q2[i]/k0) for i in range(len(q2))]
-        q3=k0*np.sqrt(2+2*np.sin(alpha)*np.sin(beta)-2*np.cos(alpha)*np.cos(beta)*np.cos(dth))  #total q for NP formfactor calculation
+        #beta=[np.arcsin(q2[i]/k0) for i in range(len(q2))]
+        #q3=k0*np.sqrt(2+2*np.sin(alpha)*np.sin(beta)-2*np.cos(alpha)*np.cos(beta)*np.cos(dth))  #total q for NP formfactor calculation
+        q3=np.sqrt(q1*q1+qxy*qxy)
         erad=self.eleradius   # classic electron radius
         qc=2*np.sqrt(np.pi*erad*float(self.ui.rodrhoLE.text())) # half critical q for tansmission calculation
         rod=[] #return value
@@ -1558,12 +1562,12 @@ class MainWindow (QMainWindow):
                 f1=complex(q2[i],0)
                 trans=4*abs(f1/(f1+fmax))*abs(f1/(f1+fmax))
                 if self.ui.rodlipidCB.checkState()!=0:
-                    formfac=special.sph_jn(0,q1[i]*size/2)[0][0]*special.sph_jn(0,q1[i]*size/2)[0][0] #use Bessel function here.
+                    formfac=special.spherical_jn(0,q1[i]*size/2)*special.spherical_jn(0,q1[i]*size/2)#use Bessel function here.
                 else:
                     if sizeres==0:
-                        formfac=9*(special.sph_jn(1,q3[i]*size)[0][1]/(q3[i]*size))**2
+                        formfac=9*(special.spherical_jn(1,q3[i]*size)/(q3[i]*size))**2
                     else:
-                        formfac=quad(lambda t: 9*(special.sph_jn(1,q3[i]*t)[0][1]/(q3[i]*t))**2*np.exp(-(t-size)**2/2/sizeres**2), size-2.82*sizeres, size+2.82*sizeres)[0]/np.sqrt(2*np.pi)/sizeres
+                        formfac=quad(lambda t: 9*(special.spherical_jn(1,q3[i]*t)/(q3[i]*t))**2*np.exp(-(t-size)**2/2/sizeres**2), size-2.82*sizeres, size+2.82*sizeres)[0]/np.sqrt(2*np.pi)/sizeres
                 rod.append(trans*formfac*yscale*np.exp(-q1[i]**2*roughness**2)+bgcon+bglin*q1[i])
         return rod
                 
@@ -1804,7 +1808,8 @@ class MainWindow (QMainWindow):
         for i in range(len(self.fluparaname)):
             self.flupara[i]=[float(self.uifluLE[i].text()), False, None, None]  
         self.updateFluElement()
-        self.updateFluQc()
+        self.updateFluCal()
+        #self.updateFluQc()
             
     def openFluFile(self):  #open flu files and also remove all current ref files in the listwidget
         f=QFileDialog.getOpenFileNames(caption='Select Multiple Fluorescence Files to import', directory=self.directory, filter='Flu Files (*.flu*;*_flu.txt)')
@@ -1973,10 +1978,10 @@ class MainWindow (QMainWindow):
       #  print volume, toprho            
       #  print self.fluelepara
 
-    def updateFluQc(self):
-        self.updateFluElement()
-        self.ui.flurelrhobotLE.setText(format(self.botrho, '.4f'))
-        self.ui.fluqcLE.setText(format(self.fluqc, '.4f'))
+    # def updateFluQc(self):
+    #     self.updateFluElement()
+    #     self.ui.flurelrhobotLE.setText(format(self.botrho, '.4f'))
+    #     self.ui.fluqcLE.setText(format(self.fluqc, '.4f'))
 
 
     def insFluIon(self):  # add one ion in the subphase
@@ -1985,10 +1990,13 @@ class MainWindow (QMainWindow):
         if len(insrows)!=1:
             self.messageBox('Warning:: Only one row can be seleted!')
         else:
+            self.disconnect(self.ui.flusubTW, SIGNAL('cellChanged(int,int)'), self.updateFluCal)
             self.ui.flusubTW.insertRow(insrows[0])
-        for i in range(3):
-            self.ui.flusubTW.setItem(insrows[0],i,QTableWidgetItem('Cl/2/1.80'.split('/')[i]))
-            
+            for i in range(3):
+                self.ui.flusubTW.setItem(insrows[0],i,QTableWidgetItem('Cl/2/1.80'.split('/')[i]))
+            self.connect(self.ui.flusubTW, SIGNAL('cellChanged(int,int)'), self.updateFluCal)
+            self.updateFluCal()
+
     def rmFluIon(self): #remove one ion in the subphase
         rmrows=self.ui.flusubTW.selectionModel().selectedRows()   
         removerows=[]
@@ -2000,7 +2008,8 @@ class MainWindow (QMainWindow):
         else:
             for i in range(len(removerows)):
                 self.ui.flusubTW.removeRow(removerows[i])
-    
+            self.updateFluCal()
+
     
     def updateFluParVal(self): #update the flu parameters value
         for i in range(len(self.fluparaname)):
@@ -2009,6 +2018,8 @@ class MainWindow (QMainWindow):
     def updateFluCal(self): # caluate the flu  based on current parameters.
         self.updateFluParVal()
         self.updateFluElement()
+        self.ui.flurelrhobotLE.setText(format(self.botrho, '.4f'))
+        self.ui.fluqcLE.setText(format(self.fluqc, '.4f'))
         flupara=[self.flupara[i][0] for i in range(len(self.flupara))]
         if self.flusavefitindex==1:
             xflu=np.linspace(max(0,self.fluxmin),self.fluxmax,self.flunp)
@@ -2639,7 +2650,7 @@ class MainWindow (QMainWindow):
                     self.gixxmin=np.min(data[:,0])
                 else:
                     self.gixxmax=0.7
-                    self.gixxmin=0
+                    self.gixxmin=0.001
                 xgix=np.linspace(self.gixxmin,self.gixxmax,800)
                 self.gixcal=np.vstack((xgix,self.gixCalFun(d,rho,mu, sigma,syspara,xgix))).T
             self.updateGixPlot()
@@ -2676,7 +2687,7 @@ class MainWindow (QMainWindow):
         length=np.sum(d)+4*(sigma[0]+sigma[-1]) # total length of inner slabs plus 4 times rougness for both sides
         steps=int(length/slab) # each sliced box has thickness of ~ 0.25 \AA
         sd = length / steps  # thickness for each slab
-        xsld = np.linspace(-4 * sigma[0] + sd / 2, np.sum(d) + 4 * sigma[-1] - sd / 2, steps) # get the x-axis for sld
+        xsld=np.linspace(-4*sigma[0]+sd/2,np.sum(d)+4*sigma[-1]-sd/2,steps) # get the x-axis for sld
         intrho=self.sldCalFun(d,rho,sigma,xsld)
         intmu=self.sldCalFun(d,mu,sigma,xsld)
 

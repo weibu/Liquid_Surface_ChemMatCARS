@@ -17,8 +17,8 @@ class TwoDDetector:
         
         if det=='Pilatus':
             self.pix_size=0.172
-            self.hroi=[0,194]
-            self.vroi=[0,486]
+            #self.hroi=[0,194]
+            #self.vroi=[0,486]
         elif det=='Bruker':
             self.pix_size=0.060
             self.hroi=[0,1023]
@@ -53,6 +53,10 @@ class TwoDDetector:
             self.errorData=np.sqrt(self.imageData)
             self.NROWS=im.size[0]
             self.NCOLS=im.size[1]
+            self.hroi=[0, self.NCOLS-1]
+            self.vroi=[0, self.NROWS-1]
+           # print self.NCOLS, self.NROWS
+           # print self.hroi, self.vroi
         elif self.det=='Bruker':
             # Reading Bruker Image File #
             try:
