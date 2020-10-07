@@ -1879,7 +1879,7 @@ class MainWindow (QMainWindow):
         
         
     def pilRefBurn(self):
-        if self.pilSelected_Dth[0]!=0:
+        if self.pilSelected_Dth[0] < 0.001:
             self.messageBox('Warning: It it not a REF burn test. Please use GID burn test button!')
         else:
             self.uipdburn.plotWidget.canvas.ax.clear()

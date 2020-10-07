@@ -25,6 +25,7 @@ import periodictable
 from periodictable import *
 
 
+
 (Ui_MainWindow, QMainWindow) = uic.loadUiType('mainwindow.ui')
 
 class MainWindow (QMainWindow):
@@ -76,7 +77,8 @@ class MainWindow (QMainWindow):
         self.ui.refqreslabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')
         self.ui.rodrhounitlabel.setText('e/'+u'\u212b'+u'\u00b3')
         self.ui.rodalphalabel.setText('angle('+u'\u03B1'+')')
-        self.ui.roddthlabel.setText('2'+u'\u03B8')
+        self.ui.roddthlabel.setText('Qxy')
+        self.ui.roddthunitlabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')
         self.ui.rodqofflabel.setText(u'\u212b'+u'\u207b'+u'\u00b9')
         self.ui.rodsizelabel.setText(u'\u212b')
         self.ui.rodsizereslabel.setText(u'\u212b')
@@ -1705,7 +1707,7 @@ class MainWindow (QMainWindow):
         fid.write('Xray_energy\t'+format(float(self.ui.rodxenLE.text()),'.3f')+'\n')
         fid.write('Rho_subphase\t'+format(float(self.ui.rodrhoLE.text()),'.3f')+'\n')
         fid.write('Angle_alpha\t'+format(float(self.ui.rodalphaLE.text()),'.4f')+'\n')
-        fid.write('Angle_dth\t'+format(float(self.ui.roddthLE.text()),'.3f')+'\n')
+        fid.write('Q_xy\t'+format(float(self.ui.roddthLE.text()),'.3f')+'\n')
         fid.close()    
     
     def loadRod(self):

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2556</width>
-    <height>1636</height>
+    <width>1190</width>
+    <height>937</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="font">
@@ -28,19 +28,16 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="reflectivitytab">
        <attribute name="title">
         <string>Reflectivity</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout">
+       <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QSplitter" name="splitter_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
+         <layout class="QHBoxLayout" name="horizontalLayout_13">
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="spacing">
              <number>6</number>
@@ -61,15 +58,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="reffileLW">
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -85,12 +76,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <item>
                <widget class="QPushButton" name="addreffilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="font">
                  <font>
                   <pointsize>8</pointsize>
@@ -121,12 +106,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmreffilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -143,15 +122,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="reffitfileLW">
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -203,15 +176,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="refedfileLW">
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -255,8 +222,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <widget class="MplWidget" name="refPW" native="true">
@@ -272,15 +239,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_11">
               <item>
                <widget class="QPushButton" name="refscalePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -304,18 +265,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="reflogyCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>LogY</string>
                 </property>
@@ -336,21 +285,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="reflegendCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>58</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -361,15 +298,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="reflegendlocCoB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>88</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -444,15 +375,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_12">
               <item>
                <widget class="QPushButton" name="refedscalePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -476,21 +401,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="refedlegendCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>58</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -501,15 +414,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="refedlegendlocCoB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>88</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -571,8 +478,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
              <widget class="QLabel" name="label_25">
@@ -590,18 +497,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
                <widget class="QCheckBox" name="refqoffCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>Qz offset</string>
                 </property>
@@ -610,14 +505,14 @@
               <item>
                <widget class="QLineEdit" name="refqoffLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -630,7 +525,7 @@
                <widget class="QLabel" name="refqofflabel">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -657,18 +552,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="refyscaleCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>Y Scale</string>
                 </property>
@@ -677,14 +560,14 @@
               <item>
                <widget class="QLineEdit" name="refyscaleLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -699,18 +582,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
                <widget class="QCheckBox" name="refqresCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>Qz Resolution</string>
                 </property>
@@ -719,14 +590,14 @@
               <item>
                <widget class="QLineEdit" name="refqresLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -739,7 +610,7 @@
                <widget class="QLabel" name="refqreslabel">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -766,12 +637,6 @@
               </item>
               <item>
                <widget class="QLabel" name="xenlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>X-ray Energy</string>
                 </property>
@@ -787,7 +652,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>41</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -798,18 +663,6 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>keV</string>
                 </property>
@@ -840,12 +693,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
                <widget class="QLabel" name="refnumslablabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="font">
                  <font>
                   <pointsize>8</pointsize>
@@ -857,25 +704,15 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="refnumslabSB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
+               <widget class="QSpinBox" name="refnumslabSB"/>
               </item>
               <item>
                <spacer name="horizontalSpacer_2">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Minimum</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -887,12 +724,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="refroughCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Fixed Roughness</string>
                 </property>
@@ -902,29 +733,10 @@
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_49">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QCheckBox" name="refrrfCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -950,7 +762,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -977,15 +789,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmrefslabPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1012,15 +818,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="clerefconPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>87</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1041,8 +841,8 @@
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
-                <height>16777215</height>
+                <width>400</width>
+                <height>200</height>
                </size>
               </property>
               <property name="tabKeyNavigation">
@@ -1061,10 +861,7 @@
                <bool>false</bool>
               </attribute>
               <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>180</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>97</number>
+               <number>80</number>
               </attribute>
               <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                <bool>false</bool>
@@ -1143,18 +940,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
                <widget class="QCheckBox" name="calrefCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>Show Cal REF</string>
                 </property>
@@ -1162,18 +947,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="calsldCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>Show Cal SLD</string>
                 </property>
@@ -1181,12 +954,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="refsysconPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Limits</string>
                 </property>
@@ -1198,15 +965,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
                <widget class="QLabel" name="label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1225,7 +986,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1236,15 +997,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>31</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1263,7 +1018,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1274,15 +1029,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_27">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>41</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1293,15 +1042,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="referrCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>200</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>110</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1333,12 +1076,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_6">
               <item>
                <widget class="QPushButton" name="fitrefPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Fit</string>
                 </property>
@@ -1346,12 +1083,6 @@
               </item>
               <item>
                <widget class="QComboBox" name="refsaveCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <item>
                  <property name="text">
                   <string>Save</string>
@@ -1386,12 +1117,6 @@
               </item>
               <item>
                <widget class="QComboBox" name="refloadCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <item>
                  <property name="text">
                   <string>Load</string>
@@ -1448,8 +1173,8 @@
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1459,12 +1184,12 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="QSplitter" name="splitter">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
+         <layout class="QHBoxLayout" name="horizontalLayout_26">
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="spacing">
+             <number>6</number>
+            </property>
             <item>
              <widget class="QLabel" name="reffileLabel_2">
               <property name="font">
@@ -1481,21 +1206,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="rodfileLW">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1557,21 +1270,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="rodfitfileLW">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1615,8 +1316,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
              <widget class="MplWidget" name="rodPW" native="true">
@@ -1634,7 +1335,7 @@
                <widget class="QPushButton" name="rodscalePB">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1658,12 +1359,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodlogyCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>LogY</string>
                 </property>
@@ -1684,21 +1379,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodlegendCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>58</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1709,15 +1392,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="rodlegendlocCoB">
-                <property name="minimumSize">
-                 <size>
-                  <width>200</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>88</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1779,22 +1456,13 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_6">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_17">
               <item>
                <widget class="QLabel" name="label_19">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="font">
                  <font>
                   <pointsize>10</pointsize>
@@ -1807,21 +1475,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodlipidCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1851,21 +1507,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodNPCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>210</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1914,7 +1558,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1925,12 +1569,6 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>keV</string>
                 </property>
@@ -1954,12 +1592,6 @@
               </item>
               <item>
                <widget class="QLabel" name="rodrholabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>rho_sub</string>
                 </property>
@@ -1975,7 +1607,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1986,12 +1618,6 @@
               </item>
               <item>
                <widget class="QLabel" name="rodrhounitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>label</string>
                 </property>
@@ -2004,20 +1630,14 @@
               <item>
                <widget class="QLabel" name="rodalphalabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2029,14 +1649,14 @@
               <item>
                <widget class="QLineEdit" name="rodalphaLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2047,21 +1667,9 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_3">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2089,20 +1697,14 @@
               <item>
                <widget class="QLabel" name="roddthlabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2114,14 +1716,14 @@
               <item>
                <widget class="QLineEdit" name="roddthLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2132,26 +1734,14 @@
               </item>
               <item>
                <widget class="QLabel" name="roddthunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
                 <property name="text">
-                 <string>label</string>
+                 <string>deg.</string>
                 </property>
                </widget>
               </item>
@@ -2180,12 +1770,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_20">
               <item>
                <widget class="QCheckBox" name="rodqoffCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Qz offset</string>
                 </property>
@@ -2194,14 +1778,14 @@
               <item>
                <widget class="QLineEdit" name="rodqoffLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2212,15 +1796,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodqofflabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2247,12 +1825,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodyscaleCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Y Scale</string>
                 </property>
@@ -2261,14 +1833,14 @@
               <item>
                <widget class="QLineEdit" name="rodyscaleLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2283,12 +1855,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_23">
               <item>
                <widget class="QCheckBox" name="rodsizeCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>size_z</string>
                 </property>
@@ -2297,14 +1863,14 @@
               <item>
                <widget class="QLineEdit" name="rodsizeLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2315,15 +1881,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodsizelabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2350,12 +1910,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodsizeresCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>size_res</string>
                 </property>
@@ -2371,7 +1925,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2382,15 +1936,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodsizereslabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2405,15 +1953,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_24">
               <item>
                <widget class="QLabel" name="label_5">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2424,15 +1966,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodconCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2444,14 +1980,14 @@
               <item>
                <widget class="QLineEdit" name="rodconLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2475,15 +2011,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="rodlinCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2495,14 +2025,14 @@
               <item>
                <widget class="QLineEdit" name="rodlinLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2513,15 +2043,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodbglabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2536,15 +2060,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_25">
               <item>
                <widget class="QCheckBox" name="rodroughCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>71</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2556,14 +2074,14 @@
               <item>
                <widget class="QLineEdit" name="rodroughLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2574,15 +2092,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodroughlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2620,21 +2132,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_28">
               <item>
                <widget class="QCheckBox" name="calrodCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>160</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>81</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2661,15 +2161,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="rodffPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>90</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2696,15 +2190,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="rodconsPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>80</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2721,7 +2209,7 @@
                <widget class="QLabel" name="label_3">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2740,7 +2228,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2753,7 +2241,7 @@
                <widget class="QLabel" name="label_4">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>31</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2772,7 +2260,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2785,7 +2273,7 @@
                <widget class="QLabel" name="label_28">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>41</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2798,7 +2286,7 @@
                <widget class="QComboBox" name="roderrCB">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>110</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2830,15 +2318,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_18">
               <item>
                <widget class="QPushButton" name="fitrodPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2849,15 +2331,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="rodsaveCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2885,15 +2361,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="rodloadCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2938,30 +2408,25 @@
             <item>
              <widget class="QTextBrowser" name="rodparaTB">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="minimumSize">
-               <size>
-                <width>400</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>400</width>
                 <height>16777215</height>
                </size>
               </property>
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </item>
        </layout>
+       <zorder></zorder>
       </widget>
       <widget class="QWidget" name="Fluorescencetab">
        <attribute name="title">
@@ -2969,23 +2434,14 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="QSplitter" name="splitter_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
+         <layout class="QHBoxLayout" name="horizontalLayout_29">
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <property name="spacing">
              <number>6</number>
             </property>
             <item>
              <widget class="QLabel" name="reffileLabel_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="font">
                <font>
                 <pointsize>8</pointsize>
@@ -3000,15 +2456,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="flufileLW">
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -3024,12 +2474,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_30">
               <item>
                <widget class="QPushButton" name="addflufilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="font">
                  <font>
                   <pointsize>8</pointsize>
@@ -3060,12 +2504,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmflufilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -3075,12 +2513,6 @@
             </item>
             <item>
              <widget class="QLabel" name="reffitfileLabel_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="text">
                <string>Loaded Fluorescence Fit Files:</string>
               </property>
@@ -3088,21 +2520,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="flufitfileLW">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -3115,12 +2535,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_31">
               <item>
                <widget class="QPushButton" name="addflufitfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Add</string>
                 </property>
@@ -3144,12 +2558,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmflufitfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -3158,8 +2566,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
              <widget class="MplWidget" name="fluPW" native="true">
@@ -3175,15 +2583,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_32">
               <item>
                <widget class="QPushButton" name="fluscalePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3207,12 +2609,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="flulogyCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>LogY</string>
                 </property>
@@ -3233,15 +2629,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="flulegendCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>58</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3252,15 +2642,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="flulegendlocCoB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>88</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3322,8 +2706,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_33">
@@ -3357,15 +2741,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_13">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3377,14 +2755,14 @@
               <item>
                <widget class="QLineEdit" name="flubulLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3395,15 +2773,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_14">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3418,12 +2790,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_34">
               <item>
                <widget class="QLabel" name="xenlabel_3">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>X-ray energy</string>
                 </property>
@@ -3439,7 +2805,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3450,15 +2816,9 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_4">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>31</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3484,7 +2844,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3495,15 +2855,9 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_6">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>31</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3519,14 +2873,14 @@
               <item>
                <widget class="QLabel" name="flurhotoplabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3538,14 +2892,14 @@
               <item>
                <widget class="QLineEdit" name="flurhotopLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3556,15 +2910,9 @@
               </item>
               <item>
                <widget class="QLabel" name="flurhotopunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3592,14 +2940,14 @@
               <item>
                <widget class="QLabel" name="flurhobotlabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3611,14 +2959,14 @@
               <item>
                <widget class="QLineEdit" name="flurhobotLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3629,15 +2977,9 @@
               </item>
               <item>
                <widget class="QLabel" name="flurhobotunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3653,14 +2995,14 @@
               <item>
                <widget class="QLabel" name="flubetatoplabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>45</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3672,14 +3014,14 @@
               <item>
                <widget class="QLineEdit" name="flubetatopLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3691,14 +3033,14 @@
               <item>
                <widget class="QLabel" name="flubetabotlabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3710,14 +3052,14 @@
               <item>
                <widget class="QLineEdit" name="flubetabotLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3729,14 +3071,14 @@
               <item>
                <widget class="QLabel" name="flubetabot2label">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3748,14 +3090,14 @@
               <item>
                <widget class="QLineEdit" name="flubetabot2LE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3770,15 +3112,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_37">
               <item>
                <widget class="QLabel" name="label_16">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>41</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3790,14 +3126,14 @@
               <item>
                <widget class="QLineEdit" name="flusliLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3808,15 +3144,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodsizelabel_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3843,15 +3173,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_15">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>71</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3870,7 +3194,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3881,15 +3205,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodsizereslabel_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3923,12 +3241,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_36">
               <item>
                <widget class="QCheckBox" name="fluqoffCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Qz offset</string>
                 </property>
@@ -3937,14 +3249,14 @@
               <item>
                <widget class="QLineEdit" name="fluqoffLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3955,15 +3267,9 @@
               </item>
               <item>
                <widget class="QLabel" name="fluqofflabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3990,12 +3296,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="fluyscaleCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Y Scale</string>
                 </property>
@@ -4004,14 +3304,14 @@
               <item>
                <widget class="QLineEdit" name="fluyscaleLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4026,15 +3326,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_38">
               <item>
                <widget class="QLabel" name="label_7">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4045,15 +3339,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="fluconCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4065,14 +3353,14 @@
               <item>
                <widget class="QLineEdit" name="fluconLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4083,15 +3371,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_10">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4102,15 +3384,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="flulinCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4122,14 +3398,14 @@
               <item>
                <widget class="QLineEdit" name="flulinLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4140,15 +3416,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodbglabel_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4163,12 +3433,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_39">
               <item>
                <widget class="QCheckBox" name="flusurcurCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>surface_cur</string>
                 </property>
@@ -4177,14 +3441,14 @@
               <item>
                <widget class="QLineEdit" name="flusurcurLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4195,15 +3459,9 @@
               </item>
               <item>
                <widget class="QLabel" name="rodroughlabel_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4213,29 +3471,10 @@
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_50">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QCheckBox" name="flusurCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>100</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4250,14 +3489,14 @@
               <item>
                <widget class="QLineEdit" name="flusurLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4268,21 +3507,9 @@
               </item>
               <item>
                <widget class="QLabel" name="flusurunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>39</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4305,7 +3532,7 @@
               <item>
                <widget class="QLabel" name="label_9">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -4346,7 +3573,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4373,15 +3600,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmflusubPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4400,16 +3621,10 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>150</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
-                <height>1677215</height>
+                <width>400</width>
+                <height>150</height>
                </size>
               </property>
               <property name="tabKeyNavigation">
@@ -4428,7 +3643,7 @@
                <bool>false</bool>
               </attribute>
               <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>230</number>
+               <number>112</number>
               </attribute>
               <attribute name="horizontalHeaderMinimumSectionSize">
                <number>34</number>
@@ -4496,15 +3711,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_27">
               <item>
                <widget class="QCheckBox" name="calfluCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>200</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4515,15 +3724,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="flushoqcCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>200</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4550,15 +3753,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="fluconsPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>80</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4574,14 +3771,14 @@
               <item>
                <widget class="QLabel" name="flurhobotlabel_2">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4593,14 +3790,14 @@
               <item>
                <widget class="QLineEdit" name="flurelrhobotLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4611,15 +3808,9 @@
               </item>
               <item>
                <widget class="QLabel" name="flurelrhobotunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4647,14 +3838,14 @@
               <item>
                <widget class="QLabel" name="fluqclabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4666,14 +3857,14 @@
               <item>
                <widget class="QLineEdit" name="fluqcLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>66</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4684,15 +3875,9 @@
               </item>
               <item>
                <widget class="QLabel" name="fluqcunitlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4707,15 +3892,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_40">
               <item>
                <widget class="QLabel" name="label_11">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4734,7 +3913,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4745,15 +3924,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_12">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>31</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4772,7 +3945,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4783,15 +3956,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_29">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>41</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4804,7 +3971,7 @@
                <widget class="QComboBox" name="fluerrCB">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>110</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4836,15 +4003,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_41">
               <item>
                <widget class="QPushButton" name="flufitPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4855,15 +4016,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="flusaveCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4891,15 +4046,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="fluloadCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>120</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4944,28 +4093,22 @@
             <item>
              <widget class="QTextBrowser" name="fluparaTB">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="minimumSize">
-               <size>
-                <width>400</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>400</width>
                 <height>16777215</height>
                </size>
               </property>
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -4975,23 +4118,14 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
-         <widget class="QSplitter" name="splitter_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
+         <layout class="QHBoxLayout" name="horizontalLayout_44">
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <property name="spacing">
              <number>6</number>
             </property>
             <item>
              <widget class="QLabel" name="reffileLabel_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="font">
                <font>
                 <pointsize>8</pointsize>
@@ -5006,21 +4140,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="gixfileLW">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -5036,12 +4158,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_45">
               <item>
                <widget class="QPushButton" name="addgixfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="font">
                  <font>
                   <pointsize>8</pointsize>
@@ -5072,12 +4188,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmgixfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -5087,12 +4197,6 @@
             </item>
             <item>
              <widget class="QLabel" name="reffitfileLabel_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="text">
                <string>Loaded GIXOS Fit Files:</string>
               </property>
@@ -5100,21 +4204,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="gixfitfileLW">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -5127,12 +4219,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_46">
               <item>
                <widget class="QPushButton" name="addgixfitfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Add</string>
                 </property>
@@ -5156,12 +4242,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmgixfitfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -5171,12 +4251,6 @@
             </item>
             <item>
              <widget class="QLabel" name="refedfileLabel_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="text">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Loaded Electron Density Files:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -5184,21 +4258,9 @@
             </item>
             <item>
              <widget class="QListWidget" name="gixedfileLW">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>269</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -5211,12 +4273,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_47">
               <item>
                <widget class="QPushButton" name="addgixedfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Add</string>
                 </property>
@@ -5240,12 +4296,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmgixedfilePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -5254,8 +4304,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_11">
             <item>
              <widget class="MplWidget" name="gixPW" native="true">
@@ -5271,15 +4321,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_48">
               <item>
                <widget class="QPushButton" name="gixscalePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5303,18 +4347,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="gixlogyCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>LogY</string>
                 </property>
@@ -5335,21 +4367,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="gixlegendCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>58</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5360,15 +4380,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="gixlegendlocCoB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>88</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5443,15 +4457,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_49">
               <item>
                <widget class="QPushButton" name="gixedscalePB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5475,15 +4483,9 @@
               </item>
               <item>
                <widget class="QCheckBox" name="gixedlegendCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>58</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5494,15 +4496,9 @@
               </item>
               <item>
                <widget class="QComboBox" name="gixedlegendlocCoB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>88</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5564,8 +4560,8 @@
              </layout>
             </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_12">
             <item>
              <widget class="QLabel" name="label_30">
@@ -5583,12 +4579,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_50">
               <item>
                <widget class="QCheckBox" name="gixqoffCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Qz offset</string>
                 </property>
@@ -5597,14 +4587,14 @@
               <item>
                <widget class="QLineEdit" name="gixqoffLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5615,15 +4605,9 @@
               </item>
               <item>
                <widget class="QLabel" name="gixqofflabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5650,12 +4634,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="gixyscaleCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Y Scale</string>
                 </property>
@@ -5664,14 +4642,14 @@
               <item>
                <widget class="QLineEdit" name="gixyscaleLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5686,12 +4664,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_51">
               <item>
                <widget class="QCheckBox" name="gixqmaxCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Qmax</string>
                 </property>
@@ -5700,14 +4672,14 @@
               <item>
                <widget class="QLineEdit" name="gixqmaxLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5718,15 +4690,9 @@
               </item>
               <item>
                <widget class="QLabel" name="gixqmaxlabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5753,12 +4719,6 @@
               </item>
               <item>
                <widget class="QLabel" name="xenlabel_4">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>X-ray Energy</string>
                 </property>
@@ -5774,7 +4734,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5785,12 +4745,6 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_5">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>keV</string>
                 </property>
@@ -5803,14 +4757,14 @@
               <item>
                <widget class="QLabel" name="gixalphalabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5822,14 +4776,14 @@
               <item>
                <widget class="QLineEdit" name="gixalphaLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5840,15 +4794,9 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_7">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5876,14 +4824,14 @@
               <item>
                <widget class="QLabel" name="gixdthlabel">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5895,14 +4843,14 @@
               <item>
                <widget class="QLineEdit" name="gixdthLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5913,15 +4861,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_36">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5937,14 +4879,14 @@
               <item>
                <widget class="QLabel" name="gixalphalabel_2">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5956,14 +4898,14 @@
               <item>
                <widget class="QLineEdit" name="gixtemLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -5974,15 +4916,9 @@
               </item>
               <item>
                <widget class="QLabel" name="xenunitlabel_8">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>20</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6010,14 +4946,14 @@
               <item>
                <widget class="QLabel" name="roddthlabel_3">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6029,14 +4965,14 @@
               <item>
                <widget class="QLineEdit" name="gixtenLE">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>61</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6047,15 +4983,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_37">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6089,12 +5019,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_52">
               <item>
                <widget class="QLabel" name="refnumslablabel_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="font">
                  <font>
                   <pointsize>8</pointsize>
@@ -6107,15 +5031,9 @@
               </item>
               <item>
                <widget class="QSpinBox" name="gixnumslabSB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6139,12 +5057,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="gixroughCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Fixed Roughness</string>
                 </property>
@@ -6167,7 +5079,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6194,15 +5106,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="rmgixslabPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>75</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6229,15 +5135,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="clegixconPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>87</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6258,8 +5158,8 @@
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
-                <height>16777215</height>
+                <width>400</width>
+                <height>200</height>
                </size>
               </property>
               <property name="tabKeyNavigation">
@@ -6278,7 +5178,7 @@
                <bool>false</bool>
               </attribute>
               <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>175</number>
+               <number>80</number>
               </attribute>
               <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                <bool>false</bool>
@@ -6357,12 +5257,6 @@
              <layout class="QHBoxLayout" name="horizontalLayout_54">
               <item>
                <widget class="QCheckBox" name="calgixCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Show Cal GIXOS</string>
                 </property>
@@ -6370,12 +5264,6 @@
               </item>
               <item>
                <widget class="QCheckBox" name="calgixsldCB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Show Cal SLD</string>
                 </property>
@@ -6383,12 +5271,6 @@
               </item>
               <item>
                <widget class="QPushButton" name="gixsysconPB">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="text">
                  <string>Limits</string>
                 </property>
@@ -6400,15 +5282,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_55">
               <item>
                <widget class="QLabel" name="label_32">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>51</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6427,7 +5303,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>40</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6438,15 +5314,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_33">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>31</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6465,7 +5335,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>50</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6476,15 +5346,9 @@
               </item>
               <item>
                <widget class="QLabel" name="label_34">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>41</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6497,7 +5361,7 @@
                <widget class="QComboBox" name="gixerrCB">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>110</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -6536,12 +5400,6 @@
               </item>
               <item>
                <widget class="QComboBox" name="gixsaveCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <item>
                  <property name="text">
                   <string>Save</string>
@@ -6576,12 +5434,6 @@
               </item>
               <item>
                <widget class="QComboBox" name="gixloadCB">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>57</height>
-                 </size>
-                </property>
                 <item>
                  <property name="text">
                   <string>Load</string>
@@ -6628,17 +5480,11 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="minimumSize">
-               <size>
-                <width>400</width>
-                <height>0</height>
-               </size>
-              </property>
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -6652,8 +5498,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>2556</width>
-     <height>47</height>
+     <width>1190</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
