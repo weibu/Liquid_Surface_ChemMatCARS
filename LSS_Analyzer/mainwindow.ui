@@ -28,7 +28,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="reflectivitytab">
        <attribute name="title">
@@ -3325,20 +3325,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_38">
               <item>
-               <widget class="QLabel" name="label_7">
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>BG=:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QCheckBox" name="fluconCB">
+               <widget class="QCheckBox" name="flubgCB">
                 <property name="maximumSize">
                  <size>
                   <width>100</width>
@@ -3346,12 +3333,12 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>CON</string>
+                 <string>bg</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="fluconLE">
+               <widget class="QLineEdit" name="flubgLE">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -3370,20 +3357,20 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_10">
-                <property name="maximumSize">
+               <spacer name="horizontalSpacer_49">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
-                  <height>16777215</height>
+                  <width>40</width>
+                  <height>20</height>
                  </size>
                 </property>
-                <property name="text">
-                 <string>+</string>
-                </property>
-               </widget>
+               </spacer>
               </item>
               <item>
-               <widget class="QCheckBox" name="flulinCB">
+               <widget class="QCheckBox" name="fluiondepCB">
                 <property name="maximumSize">
                  <size>
                   <width>100</width>
@@ -3391,12 +3378,12 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>LIN</string>
+                 <string>ion_depth</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="flulinLE">
+               <widget class="QLineEdit" name="fluiondepLE">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -3415,7 +3402,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="rodbglabel_2">
+               <widget class="QLabel" name="fluionlabel">
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -3423,7 +3410,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>Qz</string>
+                 <string>A</string>
                 </property>
                </widget>
               </item>

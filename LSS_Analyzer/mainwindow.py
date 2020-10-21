@@ -188,8 +188,8 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.flusurLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.fluqoffLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.fluyscaleLE,SIGNAL('returnPressed()'),self.updateFluCal)
-        self.connect(self.ui.fluconLE,SIGNAL('returnPressed()'),self.updateFluCal)
-        self.connect(self.ui.flulinLE,SIGNAL('returnPressed()'),self.updateFluCal)
+        self.connect(self.ui.flubgLE,SIGNAL('returnPressed()'),self.updateFluCal)
+        self.connect(self.ui.fluiondepLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.flusurcurLE,SIGNAL('returnPressed()'),self.updateFluCal)
         self.connect(self.ui.flusubTW, SIGNAL('cellChanged(int,int)'), self.updateFluCal)
         self.connect(self.ui.flubulLE, SIGNAL('returnPressed()'), self.updateFluCal)
@@ -1801,9 +1801,10 @@ class MainWindow (QMainWindow):
         self.ui.flusubTW.horizontalHeader().setVisible(True)
         self.ui.flusubTW.verticalHeader().setVisible(True)
         self.ui.flusubTW.setHorizontalHeaderLabels(QStringList()<<'Element'<<'Composition'<<'Ionic Radius'+' ('+u'\u212b'+')')
-        self.fluparaname=['sur_den','q_off','y_scale','bg_con','bg_lin','sur_cur']
-        self.uifluLE=[self.ui.flusurLE, self.ui.fluqoffLE, self.ui.fluyscaleLE, self.ui.fluconLE, self.ui.flulinLE, self.ui.flusurcurLE]
-        self.uifluCB=[self.ui.flusurCB, self.ui.fluqoffCB, self.ui.fluyscaleCB, self.ui.fluconCB, self.ui.flulinCB, self.ui.flusurcurCB]
+        self.ui.fluionlabel.setText(u'\u212b')
+        self.fluparaname=['sur_den','q_off','y_scale','bg_con','ion_depth','sur_cur']
+        self.uifluLE=[self.ui.flusurLE, self.ui.fluqoffLE, self.ui.fluyscaleLE, self.ui.flubgLE, self.ui.fluiondepLE, self.ui.flusurcurLE]
+        self.uifluCB=[self.ui.flusurCB, self.ui.fluqoffCB, self.ui.fluyscaleCB, self.ui.flubgCB, self.ui.fluiondepCB, self.ui.flusurcurCB]
         self.fluconsname=['Con_bulk', 'Xray_energy', 'Fluo_energy','Rho_topphase', 'Rho_botphase','Beta_topphase','Beta_bot(inc)','Beta_bot(flu)','Slit_vertical', 'Detector_len']  
         self.uifluconLE=[self.ui.flubulLE, self.ui.fluxenLE, self.ui.flufluenLE, self.ui.flurhotopLE, self.ui.flurhobotLE, self.ui.flubetatopLE, self.ui.flubetabotLE, self.ui.flubetabot2LE, self.ui.flusliLE, self.ui.fludetLE]
         self.flupara={}  #initialize the flu  parameter dictonary
@@ -2043,8 +2044,8 @@ class MainWindow (QMainWindow):
         surden=flupara[0]
         qoff=flupara[1]
         yscale=flupara[2]
-        bgcon=flupara[3]
-        bglin=flupara[4]
+        bg=flupara[3]
+        iondepth=flupara[4]
         surcur=flupara[5]*1e10   # in unit of /AA
         conbulk=float(self.ui.flubulLE.text())   #get the bulk concentration
         k0=2*np.pi*float(self.ui.fluxenLE.text())/12.3984 # wave vector
@@ -2062,9 +2063,9 @@ class MainWindow (QMainWindow):
                 z2=(fprint[i]+detlen)/2*alpha[i]
                 effd,trans=self.frsnllCal(self.flutopdel,self.flutopbet,self.flubotdel,self.flubotbeta,self.flubotmu1,k0,alpha[i]) 
                 effv=effd*topd*np.exp(-detlen/2/topd)*(detlen*effd*np.exp(z2/alpha[i]/topd)*(np.exp(-z1/effd)-np.exp(-z2/effd))+topd*(np.exp(detlen/topd)-1)*(z1-z2))/(detlen*effd+topd*(z1-z2))
-                int_sur=surden*topd*(np.exp(detlen/2/topd)-np.exp(-detlen/2/topd))   #surface intensity
+                int_sur=surden*topd*(np.exp(detlen/2/topd)-np.exp(-detlen/2/topd))*np.exp(-iondepth/effd)   #surface intensity
                 int_bulk=effv*self.avoganum*conbulk*self.fluelepara[0][1]/1e27  #bluk intensity; the element in the first row is the target element
-                int_tot=yscale*trans*(int_sur+int_bulk)+bgcon+bglin*alpha[i]
+                int_tot=yscale*trans*(int_sur+int_bulk)+bg
                 flu.append(int_tot)
              #   p_d.append(effd)
         else:  #with surface curvature 
@@ -2074,7 +2075,7 @@ class MainWindow (QMainWindow):
                 ssum=0
                 steps=int((detlen+fprint[i])/2/1e6)  # use 0.1 mm as the step size
                 stepsize=(detlen+fprint[i])/2/steps
-                x=np.linspace(-fprint[i]/2, detlen/2, steps) # get the position fo single ran hitting the surface relative to the center of detector area with the step size "steps"
+                x=np.linspace(-fprint[i]/2, detlen/2, steps) # get the position fo single ray hitting the surface relative to the center of detector area with the step size "steps"
                 for j in range(len(x)):
                     alphanew=alpha[i]-x[j]/surcur  # the incident angle at position x[j]
                     y1=-detlen/2-x[j]
@@ -2082,12 +2083,12 @@ class MainWindow (QMainWindow):
                     effd,trans=self.frsnllCal(self.flutopdel,self.flutopbet,self.flubotdel,self.flubotbeta,self.flubotmu1,k0,alphanew) 
                     if x[j]>-detlen/2:
                         bsum=bsum+np.exp(-x[j]/topd)*trans*effd*(1.0-np.exp(-y2*alpha[i]/effd))
-                        ssum=ssum+np.exp(-x[j]/topd)*trans
+                        ssum=ssum+np.exp(-x[j]/topd)*trans*np.exp(-iondepth/effd)
                     else:
                         bsum=bsum+np.exp(-x[j]/topd)*trans*effd*(np.exp(-y1*alpha[i]/effd)-np.exp(-y2*alpha[i]/effd))  #surface has no contribution at this region
                 int_bulk=bsum*stepsize*self.avoganum*conbulk*self.fluelepara[0][1]/1e27
                 int_sur=ssum*stepsize*surden
-                int_tot=yscale*(int_bulk+int_sur)+bgcon+bglin*alpha[i]
+                int_tot=yscale*(int_bulk+int_sur)+bg
                 flu.append(int_tot)
         return flu
         
@@ -2137,8 +2138,8 @@ class MainWindow (QMainWindow):
             self.ui.flusurLE.setText(format(self.fluresult.params[self.fluparaname[0]].value, '.5f'))
             self.ui.fluqoffLE.setText(format(self.fluresult.params[self.fluparaname[1]].value, '.6f'))
             self.ui.fluyscaleLE.setText(format(self.fluresult.params[self.fluparaname[2]].value, '.2e'))
-            self.ui.fluconLE.setText(format(self.fluresult.params[self.fluparaname[3]].value, '.2e'))
-            self.ui.flulinLE.setText(format(self.fluresult.params[self.fluparaname[4]].value, '.2e'))
+            self.ui.flubgLE.setText(format(self.fluresult.params[self.fluparaname[3]].value, '.2e'))
+            self.ui.fluiondepLE.setText(format(self.fluresult.params[self.fluparaname[4]].value, '.2e'))
             self.ui.flusurcurLE.setText(format(self.fluresult.params[self.fluparaname[5]].value, '.2f'))
             self.ui.calfluCB.setCheckState(2)
             self.updateFluCal()
@@ -2166,10 +2167,10 @@ class MainWindow (QMainWindow):
     def updateFluPara(self):
         Dialog=QDialog(self)
         self.uiflupara=uic.loadUi('flupara.ui', Dialog)
-        self.uifluparaminCB=[self.uiflupara.surdenminCB,self.uiflupara.qoffminCB,self.uiflupara.yscaleminCB,self.uiflupara.bgconminCB,self.uiflupara.bglinminCB,self.uiflupara.surcurminCB]
-        self.uifluparamaxCB=[self.uiflupara.surdenmaxCB,self.uiflupara.qoffmaxCB,self.uiflupara.yscalemaxCB,self.uiflupara.bgconmaxCB,self.uiflupara.bglinmaxCB,self.uiflupara.surcurmaxCB]
-        self.uifluparaminLE=[self.uiflupara.surdenminLE,self.uiflupara.qoffminLE,self.uiflupara.yscaleminLE,self.uiflupara.bgconminLE,self.uiflupara.bglinminLE,self.uiflupara.surcurminLE]
-        self.uifluparamaxLE=[self.uiflupara.surdenmaxLE,self.uiflupara.qoffmaxLE,self.uiflupara.yscalemaxLE,self.uiflupara.bgconmaxLE,self.uiflupara.bglinmaxLE,self.uiflupara.surcurmaxLE]
+        self.uifluparaminCB=[self.uiflupara.surdenminCB,self.uiflupara.qoffminCB,self.uiflupara.yscaleminCB,self.uiflupara.bgminCB,self.uiflupara.iondepminCB,self.uiflupara.surcurminCB]
+        self.uifluparamaxCB=[self.uiflupara.surdenmaxCB,self.uiflupara.qoffmaxCB,self.uiflupara.yscalemaxCB,self.uiflupara.bgmaxCB,self.uiflupara.iondepmaxCB,self.uiflupara.surcurmaxCB]
+        self.uifluparaminLE=[self.uiflupara.surdenminLE,self.uiflupara.qoffminLE,self.uiflupara.yscaleminLE,self.uiflupara.bgminLE,self.uiflupara.iondepminLE,self.uiflupara.surcurminLE]
+        self.uifluparamaxLE=[self.uiflupara.surdenmaxLE,self.uiflupara.qoffmaxLE,self.uiflupara.yscalemaxLE,self.uiflupara.bgmaxLE,self.uiflupara.iondepmaxLE,self.uiflupara.surcurmaxLE]
         for i in range(len(self.flupara)):
             if self.flupara[i][2]!=None:
                 self.uifluparaminCB[i].setCheckState(2)

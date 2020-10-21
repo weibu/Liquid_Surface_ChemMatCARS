@@ -506,7 +506,7 @@
             </font>
            </property>
            <property name="text">
-            <string>bg_con</string>
+            <string>bg</string>
            </property>
           </widget>
          </item>
@@ -515,7 +515,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
-              <widget class="QCheckBox" name="bgconminCB">
+              <widget class="QCheckBox" name="bgminCB">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -533,7 +533,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="bgconminLE">
+              <widget class="QLineEdit" name="bgminLE">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -556,7 +556,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
-              <widget class="QCheckBox" name="bgconmaxCB">
+              <widget class="QCheckBox" name="bgmaxCB">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -574,7 +574,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="bgconmaxLE">
+              <widget class="QLineEdit" name="bgmaxLE">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -624,7 +624,7 @@
             </font>
            </property>
            <property name="text">
-            <string>bg_lin</string>
+            <string>ion_depth</string>
            </property>
           </widget>
          </item>
@@ -633,7 +633,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_22">
              <item>
-              <widget class="QCheckBox" name="bglinminCB">
+              <widget class="QCheckBox" name="iondepminCB">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -651,7 +651,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="bglinminLE">
+              <widget class="QLineEdit" name="iondepminLE">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -674,7 +674,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_23">
              <item>
-              <widget class="QCheckBox" name="bglinmaxCB">
+              <widget class="QCheckBox" name="iondepmaxCB">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -692,7 +692,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="bglinmaxLE">
+              <widget class="QLineEdit" name="iondepmaxLE">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
