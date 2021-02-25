@@ -343,7 +343,7 @@ class MainWindow (QMainWindow):
         self.specData=self.specRead.Data
         self.specPar=self.specRead.Par
         self.endScanNum=self.specData['NumOfScans']
-        print self.endScanNum
+       # print self.endScanNum
         if self.specData['NumOfScans']==0:
             self.ui.statusBar.showMessage(self.SpecData['Message'])
         else:
@@ -2433,7 +2433,7 @@ class MainWindow (QMainWindow):
                 self.pilGIDDataErr_Q=griddata((self.pilGIDXAxs_Q.ravel(),self.pilGIDYAxs_Q.ravel()),self.pilGIDDataErr.ravel(), (qxy,qz), method='linear',fill_value=1e-10)
             self.pilGIDXAxs_Q=qxy
             self.pilGIDYAxs_Q=qz
-            fint=interp1d(self.pilGIDXAxs_Q[0], self.pilGIDData_Q, kind='cubic')   # interpolate the data along x-axis
+            fint=interp1d(self.pilGIDXAxs_Q[0], self.pilGIDData_Q, kind='linear')   # interpolate the data along x-axis
             newpilGIDXAxis=np.linspace(self.pilGIDXAxs_Q[0][0],self.pilGIDXAxs_Q[0][-1],len(self.pilGIDXAxs_Q[0])*10)
             inter_pilGIDData_Q=fint(newpilGIDXAxis)
             self.Zdata=inter_pilGIDData_Q
@@ -2756,7 +2756,8 @@ class MainWindow (QMainWindow):
     def polynomial(self,x,*p):    #define polynomial function
         return sum([p[i]*x**i for i in range(len(p))])
         
-    def pilGIDData(self):   
+    def pilGIDData(self):
+        #print 'I am missing'
         if self.pilGIDshow==0:
             self.disconnect(self.ui.pilAxesComboBox, SIGNAL('currentIndexChanged(int)'), self.update2dPlots)
             self.ui.pilAxesComboBox.setCurrentIndex(1)
@@ -3067,19 +3068,19 @@ class MainWindow (QMainWindow):
             cen=[self.cen[1], self.cen[0]]
             self.ax={}
             if self.dir=='H':
-                self.refextent=[self.pilatus.bglcen-slit[1], self.pilatus.bgrcen+slit[1]+1, cen[0]-slit[0], cen[0]+slit[0]+1]
+                self.refextent=[max(0,self.pilatus.bglcen-slit[1]), self.pilatus.bgrcen+slit[1]+1, cen[0]-slit[0], cen[0]+slit[0]+1]
                 self.ax[1]=self.ui.refADDataPlotWidget.canvas.fig.add_subplot(2,1,1)
-                self.vmax=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
-                self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
+                self.vmax=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, max(0,self.pilatus.bglcen-slit[1]):self.pilatus.bgrcen+slit[1]+1])
+               # self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, max(0,self.pilatus.bglcen-slit[1]):self.pilatus.bgrcen+slit[1]+1])
                 self.refZdata=self.pilatus.imageData
-                p=self.ax[1].imshow(self.pilatus.imageROI[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1], origin='lower', aspect='auto', vmax=self.vmax, cmap=cmap, extent=self.refextent, interpolation='nearest')
+                p=self.ax[1].imshow(self.pilatus.imageROI[cen[0]-slit[0]:cen[0]+slit[0]+1, max(0,self.pilatus.bglcen-slit[1]):self.pilatus.bgrcen+slit[1]+1], origin='lower', aspect='auto', vmax=self.vmax, cmap=cmap, extent=self.refextent, interpolation='nearest')
                 self.ax[1].set_ylabel('w/o Corr')
                 self.ax[1].format_coord=self.format_coord_ref
             else:
                 self.refextent=[cen[1]+slit[1]+1, cen[1]-slit[1], self.pilatus.bgucen-slit[0], self.pilatus.bgdcen+slit[0]+1]
                 self.ax[1]=self.ui.refADDataPlotWidget.canvas.fig.add_subplot(1,2,1)            
                 self.vmax=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
-                self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
+                #self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
                 self.refZdata=self.pilatus.imageData
                 p=self.ax[1].imshow(self.pilatus.imageROI[self.pilatus.bgucen-slit[0]:self.pilatus.bgdcen+slit[0]+1,cen[1]-slit[1]:cen[1]+slit[1]+1], origin='lower', aspect='auto', vmax=self.vmax, cmap=cmap, extent=self.refextent, interpolation='nearest')
                 self.ax[1].set_ylabel('w/o Corr')
@@ -3162,19 +3163,19 @@ class MainWindow (QMainWindow):
             #print sig,sigerr,lbg,lbgerr,rbg,rbgerr
             self.pilatus.setROI(self.pilatus.imageData,self.pilatus.errorData,slit=self.slit,cen=self.cen,absfac=self.absfac,absnum=self.absnum,bg=self.bg,dir=self.dir,mon=None)  
             if self.dir=='H':
-                self.refextent=[self.pilatus.bglcen-slit[1], self.pilatus.bgrcen+slit[1]+1, cen[0]-slit[0], cen[0]+slit[0]+1]
+                self.refextent=[max(0,self.pilatus.bglcen-slit[1]), self.pilatus.bgrcen+slit[1]+1, cen[0]-slit[0], cen[0]+slit[0]+1]
                 self.ax[2]=self.ui.refADDataPlotWidget.canvas.fig.add_subplot(2,1,2)
-                self.vmax=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
-                self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
+                self.vmax=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, max(0,self.pilatus.bglcen-slit[1]):self.pilatus.bgrcen+slit[1]+1])
+               # self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
                 self.refZdata=self.pilatus.imageData
-                p=self.ax[2].imshow(self.pilatus.imageROI[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1], origin='lower', aspect='auto', vmax=self.vmax, cmap=cmap, extent=self.refextent, interpolation='nearest')
+                p=self.ax[2].imshow(self.pilatus.imageROI[cen[0]-slit[0]:cen[0]+slit[0]+1, max(0,self.pilatus.bglcen-slit[1]):self.pilatus.bgrcen+slit[1]+1], origin='lower', aspect='auto', vmax=self.vmax, cmap=cmap, extent=self.refextent, interpolation='nearest')
                 self.ax[2].set_ylabel('w Corr')
                 self.ax[2].format_coord=self.format_coord_ref
             else:
                 self.refextent=[cen[1]+slit[1]+1, cen[1]-slit[1], self.pilatus.bgucen-slit[0], self.pilatus.bgdcen+slit[0]+1]
                 self.ax[2]=self.ui.refADDataPlotWidget.canvas.fig.add_subplot(1,2,2)            
                 self.vmax=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
-                self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
+                #self.vmin=np.max(self.pilatus.imageData[cen[0]-slit[0]:cen[0]+slit[0]+1, self.pilatus.bglcen-slit[1]:self.pilatus.bgrcen+slit[1]+1])
                 self.refZdata=self.pilatus.imageData
                 p=self.ax[2].imshow(self.pilatus.imageROI[self.pilatus.bgucen-slit[0]:self.pilatus.bgdcen+slit[0]+1,cen[1]-slit[1]:cen[1]+slit[1]+1], origin='lower', aspect='auto', vmax=self.vmax, cmap=cmap, extent=self.refextent, interpolation='nearest')
                 self.ax[2].set_ylabel('w Corr')
@@ -3578,10 +3579,10 @@ class MainWindow (QMainWindow):
 
     def removeRefFiles(self):
         items=self.ui.refRefFileListWidget.selectedItems()
-        print items
+        #print items
         for item in items:
-            print self.reffiles, item
-            print self.ui.refRefFileListWidget.row(item)
+            #print self.reffiles, item
+            #print self.ui.refRefFileListWidget.row(item)
             self.reffnames.pop(self.ui.refRefFileListWidget.row(item))
             self.reffiles.pop(self.ui.refRefFileListWidget.row(item))
             #self.ui.refRefFileListWidget.takeItem(self.ui.refRefFileListWidget.row(item))
@@ -3726,7 +3727,7 @@ class MainWindow (QMainWindow):
         if self.det=='Bruker':
             self.updateCcdCutData()
         elif self.det=='Pilatus':
-            print self.pilGIDshow, self.pilGISAXSshow
+           # print self.pilGIDshow, self.pilGISAXSshow
             if self.pilGIDshow==0 and self.pilGISAXSshow==0:
                 self.updatePilCutData()
             else:
@@ -3756,7 +3757,7 @@ class MainWindow (QMainWindow):
             elif self.ui.gixCutDirComboBox.currentText()=='Qz Cut':
                 ini=-int((self.distance[0]*np.arcsin(ini*self.wavelength[0]/2.0/np.pi-np.sin(self.alpha[0]))+self.ccdSelected_Sh[0])/0.06)+self.ycenter[0]-self.yoff[0]
                 fin=-int((self.distance[0]*np.arcsin(fin*self.wavelength[0]/2.0/np.pi-np.sin(self.alpha[0]))+self.ccdSelected_Sh[0])/0.06)+self.ycenter[0]-self.yoff[0]                
-                print ini, fin
+               # print ini, fin
                 self.bruker.plotVint(self.selCutCcdData[-1],self.selCutCcdErrorData[-1],absfac=self.absfac,absnum=self.ccdSelected_AbsNum[0], cen=[self.xcenter[0]-self.xoff[0],self.ycenter[0]-self.yoff[0]],  hroi=None,  vroi=[max(fin-1,0), min(ini-1,1024)], ax_type='Q', wavelength=self.wavelength[0],s2d_dist=self.distance[0],sh=self.ccdSelected_Sh[0],alpha=self.alpha[0], mon=None)
                 self.cutData[-1]=self.bruker.vintData
             elif self.ui.gixCutDirComboBox.currentText()=='V Cut':
@@ -3922,11 +3923,11 @@ class MainWindow (QMainWindow):
                     xaxis=self.pilGIDYAxs_Q[:,0]
                     self.cutData=np.vstack((xaxis,np.sum(self.pilGIDData_Q[:,ini:fin],axis=1),np.sqrt(np.sum(self.pilGIDDataErr_Q[:,ini:fin]**2,axis=1)))).transpose()
             else:
-                print 'I am here'
+               # print 'I am here'
                 if str(self.ui.pilCutDirComboBox.currentText())=='H Cut':
                     ini=np.where(self.pilYbin[:,0]>=start)[0][0]
                     fin=np.where(self.pilYbin[:,0]<=end)[0][-1]
-                    print ini, fin
+                   # print ini, fin
                     xaxis=self.pilXbin[0,:]
                     self.cutData=np.vstack((xaxis,np.sum(self.pilDataBin[ini:fin,:],axis=0),np.sqrt(np.sum(self.pilErrorDataBin[ini:fin,:]**2,axis=0)))).transpose()
                 elif str(self.ui.pilCutDirComboBox.currentText())=='V Cut':
@@ -4765,7 +4766,7 @@ class MainWindow (QMainWindow):
     def update2dMaxSlider(self):
         self.ui.twodMaxLineEdit.setText(str(self.ui.twodMaxHorizontalSlider.value()*(self.imageMax-self.imageMin)/100.0))
         self.ui.twodMinHorizontalSlider.setMaximum(int(float(self.ui.twodMaxLineEdit.text())*100.0/(self.imageMax-self.imageMin)))
-        print 'I ma here'
+       # print 'I ma here'
         self.update2dPlotPlot()
         
     def update2dMinSlider(self):
@@ -4778,9 +4779,11 @@ class MainWindow (QMainWindow):
         else:
             self.plot2dindex=1            
             pointden=self.ui.twodDenFacSpinBox.value()
-            fint=interp1d(self.data2dx[0], self.data2dint, kind='cubic')
+            fint=interp1d(self.data2dx[0], self.data2dint, kind='linear')
             newdata2dx=np.linspace(self.data2dx[0][0],self.data2dx[0][-1],len(self.data2dx[0])*pointden)
             self.intpoldata2dint=fint(newdata2dx)
+            self.Zdata = self.intpoldata2dint
+           # print np.min(self.intpoldata2dint), np.min(self.data2dint)
             self.update2dPlotPlot()
     
     def update2dPlotPlot(self):

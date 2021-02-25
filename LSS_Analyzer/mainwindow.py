@@ -1813,7 +1813,8 @@ class MainWindow (QMainWindow):
         self.updateFluElement()
         self.updateFluCal()
         #self.updateFluQc()
-            
+
+
     def openFluFile(self):  #open flu files and also remove all current ref files in the listwidget
         f=QFileDialog.getOpenFileNames(caption='Select Multiple Fluorescence Files to import', directory=self.directory, filter='Flu Files (*.flu*;*_flu.txt)')
         self.ui.tabWidget.setCurrentIndex(2)
