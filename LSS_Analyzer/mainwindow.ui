@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1190</width>
-    <height>937</height>
+    <width>1666</width>
+    <height>1538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2904,7 +2904,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>0.2589</string>
+                 <string>0.260</string>
                 </property>
                </widget>
               </item>
@@ -3026,7 +3026,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>1.05e-10</string>
+                 <string>1.35e-10</string>
                 </property>
                </widget>
               </item>
@@ -3360,6 +3360,9 @@
                <spacer name="horizontalSpacer_49">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Minimum</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -5485,8 +5488,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1190</width>
-     <height>21</height>
+     <width>1666</width>
+     <height>47</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
