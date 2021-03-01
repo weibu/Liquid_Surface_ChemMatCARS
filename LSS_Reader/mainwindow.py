@@ -2383,7 +2383,7 @@ class MainWindow (QMainWindow):
         if str(self.ui.pilAxesComboBox.currentText())=='Angles':   
             self.pilGIDxlabel=r'$2\theta$'+' '+r'$[\deg]$'
             self.pilGIDylabel=r'$\beta$'+' '+r'$[\deg]$'
-            fint=interp1d(self.pilGIDXAxs[0], self.pilGIDData, kind='cubic')   # interpolate the data along x-axis
+            fint=interp1d(self.pilGIDXAxs[0], self.pilGIDData, kind='linear')   # interpolate the data along x-axis
             newpilGIDXAxis=np.linspace(self.pilGIDXAxs[0][0],self.pilGIDXAxs[0][-1],len(self.pilGIDXAxs[0])*10)
             inter_pilGIDData=fint(newpilGIDXAxis)
             self.Zdata=inter_pilGIDData
