@@ -588,10 +588,10 @@ class MainWindow (QMainWindow):
     
     def updateRefCal(self): # caluate the Ref and Sld based on current parameters.
         row=self.ui.refparTW.rowCount()       
-        d=[float(str(self.ui.refparTW.item(i+1,0).text())) for i in range(row-2)]
-        rho=[float(str(self.ui.refparTW.item(i,1).text())) for i in range(row)]
-        mu=[float(str(self.ui.refparTW.item(i,2).text())) for i in range(row)]
-        sigma=[float(str(self.ui.refparTW.item(i,3).text())) for i in range(row-1)]
+        d=[abs(float(str(self.ui.refparTW.item(i+1,0).text()))) for i in range(row-2)]
+        rho=[abs(float(str(self.ui.refparTW.item(i,1).text()))) for i in range(row)]
+        mu=[abs(float(str(self.ui.refparTW.item(i,2).text()))) for i in range(row)]
+        sigma=[abs(float(str(self.ui.refparTW.item(i,3).text()))) for i in range(row-1)]
         if self.refsavedataindex==1:  # save the data after qoff correction & fit 
             syspara=[0,float(self.ui.refyscaleLE.text()),float(self.ui.refqresLE.text())]  
             data=np.loadtxt(str(self.reffiles[self.selectedreffiles_rows[0]]), comments='#')
@@ -653,10 +653,12 @@ class MainWindow (QMainWindow):
         slab=0.25
         k0=2*np.pi*float(self.ui.xenLE.text())/12.3984 # wave vector
         theta=x/2/k0   # convert q to theta
-        length=np.sum(d)+4*(sigma[0]+sigma[-1]) # total length of inner slabs plus 4 times rougness for both sides
+        maxsig=max(max(sigma),3)
+        length=np.sum(d)+10*maxsig # total length of inner slabs plus 4 times roughness for both sides
         steps=int(length/slab) # each sliced box has thickness of ~ 0.25 \AA
         sd = length / steps  # thickness for each slab
-        xsld=np.linspace(-4*sigma[0]+sd/2,np.sum(d)+4*sigma[-1]-sd/2,steps) # get the x-axis for sld
+        xsld=np.linspace(-5*maxsig+sd/2,np.sum(d)+5*maxsig-sd/2,steps) # get the x-axis for sld
+        #print xsld
         intrho=self.sldCalFun(d,rho,sigma,xsld)
         intmu=self.sldCalFun(d,mu,sigma,xsld)
 
@@ -672,6 +674,7 @@ class MainWindow (QMainWindow):
         d=sd*np.ones_like(sdel)
         lamda=2*np.pi/k0
         sdelf=np.array(sdel)
+        #print sdelf
         #t1=time.time()
         #print 't1-t0=',t1-t0
         ref,refr=xr.parratt(x+qoff,lamda,d,sdelf,sbet)
