@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="516adf76-1d3f-4bbd-9028-c82cba4d124d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/COLLECT-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/COLLECT-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/COLLECT-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/COLLECT-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/main.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/mainwindow.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>flucon</find>
+      <find>bgcon</find>
+      <find>kind='cubic'</find>
+      <find>burn</find>
+      <find>interp1d</find>
+      <find>format_pil_coord</find>
+      <find>self.zdata</find>
+      <find>match</find>
+      <find>merge</find>
+      <find>Qz cut</find>
+      <find>sigma</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/LSS_Reader/mainwindow.py" />
+        <option value="$USER_HOME$/PY38/Liquid_Surface_ChemMatCARS/LSS_Reader/mainwindow.py" />
+        <option value="$PROJECT_DIR$/LSS_Analyzer/mainwindow.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectId" id="1yeG3TMabcXtnR3KMLemFixILb4" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Liquid_Surface_ChemMatCARS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Liquid_Surface_ChemMatCARS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Liquid_Surface_ChemMatCARS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Liquid_Surface_ChemMatCARS" type="462c0819:PsiDirectoryNode" />
+              <item name="LSS_Analyzer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Liquid_Surface_ChemMatCARS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Liquid_Surface_ChemMatCARS" type="462c0819:PsiDirectoryNode" />
+              <item name="LSS_Reader" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="P:/Bu/python_project/LSS_Reader/MW_XR_Pil1M_20191211" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="516adf76-1d3f-4bbd-9028-c82cba4d124d" name="Default" comment="" />
+      <created>1602092075930</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602092075930</updated>
+    </task>
+    <task id="LOCAL-00001" summary="fix ref burn test criteria">
+      <created>1602095217327</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602095217327</updated>
+    </task>
+    <task id="LOCAL-00002" summary="for XFNTR: remove linear background term, add ion depth parameter.">
+      <created>1603294726846</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603294726846</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.26948053" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29329005" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix ref burn test criteria" />
+    <MESSAGE value="for XFNTR: remove linear background term, add ion depth parameter." />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59993">
+          <caret line="3529" column="22" selection-start-line="3529" selection-start-column="22" selection-end-line="3529" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/main.spec">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11322">
+          <caret line="690" column="26" selection-start-line="690" selection-start-column="26" selection-end-line="690" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59993">
+          <caret line="3529" column="22" selection-start-line="3529" selection-start-column="22" selection-end-line="3529" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/main.spec">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11730">
+          <caret line="690" column="26" selection-start-line="690" selection-start-column="26" selection-end-line="690" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60214">
+          <caret line="3542" column="21" selection-start-line="3542" selection-start-column="12" selection-end-line="3542" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/main.spec">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11730">
+          <caret line="690" column="26" selection-start-line="690" selection-start-column="26" selection-end-line="690" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80920">
+          <caret line="4760" column="63" lean-forward="true" selection-start-line="4760" selection-start-column="63" selection-end-line="4760" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80818">
+          <caret line="4754" column="22" selection-start-line="4754" selection-start-column="12" selection-end-line="4754" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15198">
+          <caret line="894" column="23" selection-start-line="881" selection-start-column="14" selection-end-line="881" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/Bu/python_project/MW_XR_Pil1M_20191211/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69751">
+          <caret line="4103" column="17" selection-start-line="4103" selection-start-column="12" selection-end-line="4103" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37077">
+          <caret line="2181" column="86" selection-start-line="2181" selection-start-column="86" selection-end-line="2181" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31977">
+          <caret line="1881" selection-start-line="1881" selection-end-line="1881" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30413">
+          <caret line="1813" selection-start-line="1813" selection-end-line="1813" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31977">
+          <caret line="1881" selection-start-line="1881" selection-end-line="1881" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/Bu/python_project/MW_XR_Pil1M_20191211/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="4103" column="17" selection-start-line="4103" selection-start-column="12" selection-end-line="4103" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/main.spec">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/PY38/Liquid_Surface_ChemMatCARS/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-278">
+          <caret line="3834" column="65" selection-start-line="3834" selection-start-column="59" selection-end-line="3834" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSS_Analyzer/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="716" column="29" lean-forward="true" selection-start-line="716" selection-start-column="29" selection-end-line="716" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

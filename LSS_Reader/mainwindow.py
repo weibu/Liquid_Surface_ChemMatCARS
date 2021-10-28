@@ -896,8 +896,12 @@ class MainWindow (QMainWindow):
            # print data[-1]
             for i in range(1,len(self.mcaIntData)):
                 if np.abs(self.mcaIntData[i][index]-data[-1][index])<=resolution:
-                    data[-1][3]=(data[-1][3]+self.mcaIntData[i][3])/2
-                    data[-1][4]=np.sqrt(data[-1][4]**2+self.mcaIntData[i][4]**2)/2
+                    a = data[-1][3] ** 2 / data[-1][4] ** 2
+                    b = self.mcaIntData[i][3] ** 2 / self.mcaIntData[i][4] ** 2
+                    c = data[-1][3] / data[-1][4] ** 2
+                    d = self.mcaIntData[i][3] / self.mcaIntData[i][4] ** 2
+                    data[-1][3] = (a + b) / (c + d)
+                    data[-1][4] = np.sqrt((a + b) / (c + d) ** 2)
                 else:
                     data=np.vstack((data,self.mcaIntData[i]))
             self.mcaIntData=data
@@ -1770,8 +1774,8 @@ class MainWindow (QMainWindow):
         if avepoint<1:
             avepoint=max(np.abs(avepoint),1)
             self.messageBox('Warning: Average points should be a positive interger!\n'+str(avepoints)+' is used as ave points in the calculation')
-        ini=self.xcenter[0]-2
-        fin=self.xcenter[0]+2
+        ini=self.xcenter[0]-4
+        fin=self.xcenter[0]+4
         cen=[self.xcenter[0], self.ycenter[0]]
         loop=[divmod(len(self.selectedPilFramesNums),aveframe)[0],divmod(len(self.selectedPilFramesNums),aveframe)[1]]
         if loop[1]!=0:
@@ -4045,14 +4049,15 @@ class MainWindow (QMainWindow):
             
         
     def g_lfunction(self,par,x,y):
-        return y-par[0]+par[1]*np.sin(x*np.pi/180)
+        return y-par[0]+par[1]*np.tan(x*np.pi/180)
         
     def calg_l2(self):
         Dialog=QDialog(self)
         self.uig_l2=uic.loadUi('g_l2Dialog.ui', Dialog)
         self.uig_l2.show()
-        scannum=[item+1 for item in self.selectedScanNums]
-        self.g_l2alpha=[self.specPar[i]['In_Rot'] for i in self.selectedScanNums]
+        scannum=[item for item in self.selectedScanNums]
+        #self.g_l2alpha=[self.specPar[i]['In_Rot'] for i in self.selectedScanNums]
+        self.g_l2alpha = [round(np.arctan(round(self.specPar[i]['Q'][2],3)*self.specPar[i]['Wavelength']/4/np.pi)*180/np.pi,5) for i in self.selectedScanNums]
         self.g_l2center=[self.scanCenter[i] for i in self.selectedScanNums]
         self.g_l2=[self.specPar[i]['g_l2'] for i in self.selectedScanNums]
         self.uig_l2.g_l2ScanLineEdit.setText(str(scannum)[1:-1])
@@ -4069,7 +4074,7 @@ class MainWindow (QMainWindow):
         fp=p[0]
         self.uig_l2.g_l2plotWidget.canvas.ax.clear()
         self.uig_l2.g_l2plotWidget.canvas.ax.plot(self.g_l2alpha,self.g_l2center,'ro')
-        self.uig_l2.g_l2plotWidget.canvas.ax.plot(np.array(self.g_l2alpha),fp[0]-fp[1]*np.sin(np.array(self.g_l2alpha)*np.pi/180),'-b',label=('g_l2= %.3f'%fp[1]))
+        self.uig_l2.g_l2plotWidget.canvas.ax.plot(np.array(self.g_l2alpha),fp[0]-fp[1]*np.tan(np.array(self.g_l2alpha)*np.pi/180),'-b',label=('g_l2= %.3f'%fp[1]))
         self.uig_l2.g_l2plotWidget.canvas.ax.set_xlabel('Alpha [Degrees]')
         self.uig_l2.g_l2plotWidget.canvas.ax.set_ylabel('Sh_Center [mm]')
         self.uig_l2.g_l2plotWidget.canvas.ax.legend(frameon=False,scatterpoints=0,numpoints=1)
@@ -4079,7 +4084,7 @@ class MainWindow (QMainWindow):
         self.uig_l2.g_l2TextBrowser.append('Scan \t Alpha \t Sh Nom \t Sh Cen \t N-C' )
         j=0
         for i in self.selectedScanNums:
-            self.uig_l2.g_l2TextBrowser.append(str(i+1)+' \t %.4f '%self.g_l2alpha[j]+'\t %.4f'%(-np.sin(self.g_l2alpha[j]*np.pi/180)*self.g_l2[j])+'\t %.4f '%self.g_l2center[j]+'\t %.4f '%(-np.sin(self.g_l2alpha[j]*np.pi/180)*self.g_l2[j]-self.g_l2center[j]))
+            self.uig_l2.g_l2TextBrowser.append(str(i+1)+' \t %.5f '%self.g_l2alpha[j]+'\t %.4f'%(-np.tan(self.g_l2alpha[j]*np.pi/180)*self.g_l2[j])+'\t %.4f '%self.g_l2center[j]+'\t %.4f '%(-np.tan(self.g_l2alpha[j]*np.pi/180)*self.g_l2[j]-self.g_l2center[j]))
             j=j+1
         self.uig_l2.g_l2TextBrowser.append('\n')
         self.uig_l2.g_l2TextBrowser.append(':New Values:')
@@ -4087,7 +4092,7 @@ class MainWindow (QMainWindow):
         self.uig_l2.g_l2TextBrowser.append('Scan \t Alpha \t Sh Nom \t Sh Cen \t N-C' )
         j=0
         for i in self.selectedScanNums:
-            self.uig_l2.g_l2TextBrowser.append(str(i+1)+' \t %.4f '%self.g_l2alpha[j]+'\t %.4f'%(fp[0]-np.sin(self.g_l2alpha[j]*np.pi/180)*fp[1])+'\t %.4f '%self.g_l2center[j]+'\t %.4f '%(-np.sin(self.g_l2alpha[j]*np.pi/180)*fp[1]+fp[0]-self.g_l2center[j]))
+            self.uig_l2.g_l2TextBrowser.append(str(i+1)+' \t %.5f '%self.g_l2alpha[j]+'\t %.4f'%(fp[0]-np.tan(self.g_l2alpha[j]*np.pi/180)*fp[1])+'\t %.4f '%self.g_l2center[j]+'\t %.4f '%(-np.tan(self.g_l2alpha[j]*np.pi/180)*fp[1]+fp[0]-self.g_l2center[j]))
             j=j+1
         self.uig_l2.g_l2TextBrowser.append('\n')
         self.uig_l2.g_l2TextBrowser.append('old g_l2\t= %.3f'%self.g_l2[0])
@@ -4098,8 +4103,9 @@ class MainWindow (QMainWindow):
         Dialog=QDialog(self)
         self.uig_l3=uic.loadUi('g_l3Dialog.ui', Dialog)
         self.uig_l3.show()
-        scannum=[item+1 for item in self.selectedScanNums]
-        self.g_l3alpha=[self.specPar[i]['In_Rot'] for i in self.selectedScanNums]
+        scannum=[item for item in self.selectedScanNums]
+        #self.g_l3alpha=[self.specPar[i]['In_Rot'] for i in self.selectedScanNums]
+        self.g_l3alpha = [round(np.arctan(round(self.specPar[i]['Q'][2], 3) * self.specPar[i]['Wavelength'] / 4 / np.pi) * 180 / np.pi, 5) for i in self.selectedScanNums]
         self.g_l3center=[self.scanCenter[i] for i in self.selectedScanNums]
         self.g_l3=[self.specPar[i]['g_l3'] for i in self.selectedScanNums]
         self.g_l2=[self.specPar[i]['g_l2'] for i in self.selectedScanNums]
@@ -4117,7 +4123,7 @@ class MainWindow (QMainWindow):
         fp=p[0]
         self.uig_l3.g_l3plotWidget.canvas.ax.clear()
         self.uig_l3.g_l3plotWidget.canvas.ax.plot(self.g_l3alpha,self.g_l3center,'ro')
-        self.uig_l3.g_l3plotWidget.canvas.ax.plot(np.array(self.g_l3alpha),fp[0]-fp[1]*np.sin(np.array(self.g_l3alpha)*np.pi/180),'-b',label=('g_l2-g_l3= %.3f'%fp[1]))
+        self.uig_l3.g_l3plotWidget.canvas.ax.plot(np.array(self.g_l3alpha),fp[0]-fp[1]*np.tan(np.array(self.g_l3alpha)*np.pi/180),'-b',label=('g_l2-g_l3= %.3f'%fp[1]))
         self.uig_l3.g_l3plotWidget.canvas.ax.set_xlabel('Alpha [Degrees]')
         self.uig_l3.g_l3plotWidget.canvas.ax.set_ylabel('Oh_Center [mm]')
         self.uig_l3.g_l3plotWidget.canvas.ax.legend(frameon=False,scatterpoints=0,numpoints=1)
@@ -4127,7 +4133,7 @@ class MainWindow (QMainWindow):
         self.uig_l3.g_l3TextBrowser.append('Scan \t Alpha \t Oh Nom \t Oh Cen \t N-C' )
         j=0
         for i in self.selectedScanNums:
-            self.uig_l3.g_l3TextBrowser.append(str(i+1)+' \t %.4f '%self.g_l3alpha[j]+'\t %.4f'%(np.sin(self.g_l3alpha[j]*np.pi/180)*(self.g_l3[j]-self.g_l2[j]))+'\t %.4f '%self.g_l3center[j]+'\t %.4f '%(np.sin(self.g_l3alpha[j]*np.pi/180)*(self.g_l3[j]-self.g_l2[j])-self.g_l3center[j]))
+            self.uig_l3.g_l3TextBrowser.append(str(i+1)+' \t %.5f '%self.g_l3alpha[j]+'\t %.4f'%(np.tan(self.g_l3alpha[j]*np.pi/180)*(self.g_l3[j]-self.g_l2[j]))+'\t %.4f '%self.g_l3center[j]+'\t %.4f '%(np.tan(self.g_l3alpha[j]*np.pi/180)*(self.g_l3[j]-self.g_l2[j])-self.g_l3center[j]))
             j=j+1
         self.uig_l3.g_l3TextBrowser.append('\n')
         self.uig_l3.g_l3TextBrowser.append(':New Values:')
@@ -4135,7 +4141,7 @@ class MainWindow (QMainWindow):
         self.uig_l3.g_l3TextBrowser.append('Scan \t Alpha \t Oh Nom \t Oh Cen \t N-C' )
         j=0
         for i in self.selectedScanNums:
-            self.uig_l3.g_l3TextBrowser.append(str(i+1)+' \t %.4f '%self.g_l3alpha[j]+'\t %.4f'%(fp[0]-np.sin(self.g_l3alpha[j]*np.pi/180)*fp[1])+'\t %.4f '%self.g_l3center[j]+'\t %.4f '%(-np.sin(self.g_l3alpha[j]*np.pi/180)*fp[1]+fp[0]-self.g_l3center[j]))
+            self.uig_l3.g_l3TextBrowser.append(str(i+1)+' \t %.5f '%self.g_l3alpha[j]+'\t %.4f'%(fp[0]-np.tan(self.g_l3alpha[j]*np.pi/180)*fp[1])+'\t %.4f '%self.g_l3center[j]+'\t %.4f '%(-np.tan(self.g_l3alpha[j]*np.pi/180)*fp[1]+fp[0]-self.g_l3center[j]))
             j=j+1
         self.uig_l3.g_l3TextBrowser.append('\n')
         self.uig_l3.g_l3TextBrowser.append('old (g_l2-g_l3)\t= %.3f'%(self.g_l2[0]-self.g_l3[0]))
