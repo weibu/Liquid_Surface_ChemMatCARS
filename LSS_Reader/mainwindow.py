@@ -684,6 +684,17 @@ class MainWindow (QMainWindow):
         self.ui.mcaPlotMplWidget.canvas.ax.clear()
         self.nomMcaData={}
         fact=1.0
+
+        if len(self.selectedMcaScanNums) > 10:
+            self.progressDialog = QProgressDialog('Reading MCA Frames', 'Abort', 0, 100)
+            self.progressDialog.setWindowModality(Qt.WindowModal)
+            self.progressDialog.setWindowTitle('Wait')
+            self.progressDialog.setAutoClose(True)
+            self.progressDialog.setAutoReset(True)
+            self.progressDialog.setMinimum(1)
+            self.progressDialog.setMaximum(len(self.selectedMcaScanNums))
+            self.progressDialog.show()
+
         for i in self.selectedMcaScanNums:
             y=pl.array(self.mcaData[i]['Vortex'],dtype='float')
             x=pl.arange(1,len(y)+1)
@@ -708,6 +719,13 @@ class MainWindow (QMainWindow):
             if self.ui.mcaOffsetCheckBox.checkState()!=0:
                 fact=fact*float(self.ui.mcaOffsetLineEdit.text())
             self.mcaPlot(x,y,n,tc,fact)
+            if len(self.selectedMcaScanNums) > 10:
+                self.progressDialog.setLabelText('Reading MCA Frame #' + str(i))
+                self.updateProgress()
+                if self.progressDialog.wasCanceled() == True:
+                    break
+        if len(self.selectedMcaScanNums) > 10:
+            self.progressDialog.hide()
         self.mcaPlotSettings()
         self.ui.statusBar.showMessage('Done')
         
@@ -800,9 +818,9 @@ class MainWindow (QMainWindow):
             else:
                 string='%.4f'%energy+'\t'+'%.4e'%inten+'\t'+'%.4e'%error
             self.ui.mcaDataListWidget.addItem(string)
-            self.updateMcaIntPlot()
-            self.command='Flu Sum, scans=['+str([item for item in np.sort(self.selectedScanNums)])[1:-1]+'], energy range=['+str(ini)+':'+str(fin)+']' 
-            self.ui.commandLineEdit.setText(self.command)
+        self.updateMcaIntPlot()
+        self.command='Flu Sum, scans=['+str([item for item in np.sort(self.selectedScanNums)])[1:-1]+'], energy range=['+str(ini)+':'+str(fin)+']'
+        self.ui.commandLineEdit.setText(self.command)
     
     
     def mcaAcceptPeak(self,num=0): #accecpt the fitting result, save the data, and update the mca integral plot 

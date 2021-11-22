@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516adf76-1d3f-4bbd-9028-c82cba4d124d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/Analysis-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/COLLECT-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/COLLECT-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/EXE-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.pkg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PKG-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.pyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/PYZ-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Analyzer/build/main/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Analyzer/build/main/main.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/Analysis-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/COLLECT-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/COLLECT-00.toc" afterDir="false" />
+    <list default="true" id="516adf76-1d3f-4bbd-9028-c82cba4d124d" name="Default" comment="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.pkg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.pyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/main.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Reader/main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/main.spec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/mainwindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +82,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="P:/Bu/python_project/LSS_Reader/MW_XR_Pil1M_20191211" />
+    <property name="last_opened_file_path" value="P:/Bu/python_project/ChemMatCARS/LSS_Reader" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -122,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603294726846</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels">
+      <created>1635439561936</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635439561936</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -147,10 +142,23 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix ref burn test criteria" />
     <MESSAGE value="for XFNTR: remove linear background term, add ion depth parameter." />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels" />
+    <option name="LAST_COMMIT_MESSAGE" value="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
