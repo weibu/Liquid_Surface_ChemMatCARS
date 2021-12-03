@@ -41,7 +41,10 @@ class mcaread:
                 while line[:2]!='@A':
                     if line[:7]=='#@CTIME':
                         tmppar=line[7:].split()
-                        self.Par[i]['Time']=map(eval, tmppar)
+                        try:
+                            self.Par[i]['Time']=map(eval, tmppar)
+                        except:
+                            self.Par[i]['Time']=[eval(tempar[0]), eval(tempar[0]), eval(tempar[0])]
                     if line[:5]=='#Monc':
                         tmppar=line[5:].split()
                         self.Data[i]['Monc']=eval(tmppar[0])
