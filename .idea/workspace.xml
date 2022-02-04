@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516adf76-1d3f-4bbd-9028-c82cba4d124d" name="Default" comment="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels&#10;4; add progressive bar for load mca images when they are larger than 10">
+    <list default="true" id="516adf76-1d3f-4bbd-9028-c82cba4d124d" name="Default" comment="fix the MCA data nan/inf live time issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PKG-00.pkg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/PYZ-00.pyz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSS_Reader/build/main/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/build/main/main.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSS_Reader/mca_routines.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/mca_routines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSS_Reader/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSS_Reader/mainwindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637614721703</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix the MCA data nan/inf live time issue">
+      <created>1638552370150</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1638552370150</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -166,7 +173,8 @@
     <MESSAGE value="for XFNTR: remove linear background term, add ion depth parameter." />
     <MESSAGE value="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels" />
     <MESSAGE value="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels&#10;4; add progressive bar for load mca images when they are larger than 10" />
-    <option name="LAST_COMMIT_MESSAGE" value="update&#10;1; get alpha value for g_l2 and g_l3 calculation from Qz&#10;2; use weighted average for mca data merge&#10;3; change gixos window from pm 2 to pm 4 pixels&#10;4; add progressive bar for load mca images when they are larger than 10" />
+    <MESSAGE value="fix the MCA data nan/inf live time issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the MCA data nan/inf live time issue" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/LSS_Reader/mainwindow.py">
