@@ -4380,6 +4380,11 @@ class MainWindow (QMainWindow):
                 self.uipeakfit.rangeLineEdit.setText(str(self.peakfitranini)+':'+str(self.peakfitranfin))
             except:
                 pass
+            try:
+                self.uipeakfit.numberOfPeakSpinBox.setValue(len(self.fitpeakpara))
+                self.uipeakfit.bgSpinBox.setValue(len(self.fitbgpara)-1)
+            except:
+                pass
             peakrow=self.uipeakfit.numberOfPeakSpinBox.value()
             bgrow=self.uipeakfit.bgSpinBox.value()+1
             self.uipeakfit.peakTW.setRowCount(peakrow) #set the row for peak parameter; 3 colomn is fixed
@@ -4393,8 +4398,14 @@ class MainWindow (QMainWindow):
             for i in range(bgrow):
                 bgvlabel.append("C"+str(i))
             self.uipeakfit.bgTW.setVerticalHeaderLabels(bgvlabel)
-            self.fitpeakpara=[[1,1,1] for i in range(peakrow)]
-            self.fitbgpara=[0 for i in range(bgrow)]
+
+            try:
+                self.fitpeakpara = self.fitpeakpara
+                self.fitbgpara = self.fitbgpara
+            except:
+                self.fitpeakpara = [[1, 1, 1] for i in range(peakrow)]
+                self.fitbgpara = [0 for i in range(bgrow)]
+
             self.peakparadic={}
             self.peakbgparadic={}            
             for i in range(peakrow): # set values
