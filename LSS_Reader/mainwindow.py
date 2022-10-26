@@ -113,6 +113,7 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.mcaCalibConLineEdit, SIGNAL('returnPressed()'),self.updateMcaPlotData)
         self.connect(self.ui.mcaCalibLinLineEdit, SIGNAL('returnPressed()'),self.updateMcaPlotData)
         self.connect(self.ui.mcaCalibQuaLineEdit, SIGNAL('returnPressed()'),self.updateMcaPlotData)
+        self.connect(self.ui.mcaRanLineEdit, SIGNAL('returnPressed()'),self.updateMCAPlotVline)
         self.connect(self.ui.gixSumCheckBox,SIGNAL('stateChanged(int)'),self.update2dPlots)
         self.connect(self.ui.gixBPCfacLineEdit,SIGNAL('returnPressed()'),self.imageSelectedScanChanged)
         self.connect(self.ui.pilBPCfacLineEdit,SIGNAL('returnPressed()'),self.imageSelectedScanChanged)
@@ -695,6 +696,8 @@ class MainWindow (QMainWindow):
             self.progressDialog.setMaximum(len(self.selectedMcaScanNums))
             self.progressDialog.show()
 
+        self.mcaMax = 0
+
         for i in self.selectedMcaScanNums:
             y=pl.array(self.mcaData[i]['Vortex'],dtype='float')
             x=pl.arange(1,len(y)+1)
@@ -735,7 +738,16 @@ class MainWindow (QMainWindow):
         else:
             yerr=pl.sqrt(y)
         y=y/n*tc
+        self.mcaMax = max(self.mcaMax, max(y + yerr))
         self.ui.mcaPlotMplWidget.canvas.ax.errorbar(x,fact*y,fact*yerr,label=self.mcaLabel,fmt='o-')
+
+
+    def updateMCAPlotVline(self):
+        try:
+            self.mcavlines.remove()
+        except:
+            pass
+        self.mcaPlotSettings()
 
         
     def mcaPlotSettings(self):
@@ -748,6 +760,15 @@ class MainWindow (QMainWindow):
         self.ui.mcaPlotMplWidget.canvas.ax.set_ylabel('Intensity')
         self.ui.mcaPlotMplWidget.canvas.ax.set_title('Fluorescence Spectrum')
         #self.ui.specPlotMplWidget.canvas.ax.legend('_nolegend_')
+
+        try:
+            left = float(str(self.ui.mcaRanLineEdit.text()).split(':')[0])
+            right = float(str(self.ui.mcaRanLineEdit.text()).split(':')[1])
+            self.mcavlines=self.ui.mcaPlotMplWidget.canvas.ax.vlines(x=[left,right], ymin=0, ymax=self.mcaMax, color='k')
+        except:
+            pass
+
+
         self.ui.mcaPlotMplWidget.canvas.ax.grid(b=False)
         if self.mcaLogX!=0:
             self.ui.mcaPlotMplWidget.canvas.ax.set_xscale('log')
