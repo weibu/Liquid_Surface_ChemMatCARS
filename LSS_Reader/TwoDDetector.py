@@ -32,7 +32,7 @@ class TwoDDetector:
         os.chdir(path)
         self.path=os.getcwd()
 
-    def openFile(self,fname,bad_pix=0):
+    def openFile(self,fname,bad_pix=0,bad_fac=1):
         if self.det=='Pilatus':
             # Reading Pilatus Image File#
             #-------------------------------------------#
@@ -48,7 +48,7 @@ class TwoDDetector:
             self.imageData=np.array(im.transpose(Image.ROTATE_270).getdata())
             #self.imageData=np.array(im.rotate(270).getdata())
             self.imageData.shape=(im.size[0], im.size[1])
-            self.imageData=self.removeBadPix(self.imageData,iteration=bad_pix)
+            self.imageData, self.imbadPix=self.removeBadPix(self.imageData,iteration=bad_pix, factor=bad_fac)
             #self.imageData=np.fliplr(self.imageData)
             self.errorData=np.sqrt(self.imageData)
             self.NROWS=im.size[0]
@@ -138,7 +138,7 @@ class TwoDDetector:
             self.extraImageInfo()
             return 1
             
-    def removeBadPix(self,data,iteration=1):
+    def removeBadPix(self,data,iteration=1, factor=1):
         """
         Do Bad pixel correction of data with given number of iterations
         
@@ -164,9 +164,14 @@ class TwoDDetector:
             dataAv=np.delete(dataAv,-1,axis=1)
             dataAv=np.delete(dataAv,0,axis=0)
             dataAv=np.delete(dataAv,-1,axis=0) #trim the most out col/row
-            data=np.where(np.logical_and(data>tre*dataAv,data>avg),dataAv,data)
-            #print "Doing bad pixel corrections",i    
-        return data
+            bad_pix_loc = list(np.argwhere(np.logical_and(data > tre * dataAv * factor, data > avg)))
+            data=np.where(np.logical_and(data>tre*dataAv*factor,data>avg),dataAv,data)
+            #print "Doing bad pixel corrections",i
+            #print bad_pix_loc
+        try:
+            return data, bad_pix_loc
+        except:
+            return data, []
         
     def sumFiles(self, data, errorData,absfac=1,absnum=None,mon=None):
         if mon!=None:

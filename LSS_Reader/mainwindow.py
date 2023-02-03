@@ -116,7 +116,8 @@ class MainWindow (QMainWindow):
         self.connect(self.ui.mcaRanLineEdit, SIGNAL('returnPressed()'),self.updateMCAPlotVline)
         self.connect(self.ui.gixSumCheckBox,SIGNAL('stateChanged(int)'),self.update2dPlots)
         self.connect(self.ui.gixBPCfacLineEdit,SIGNAL('returnPressed()'),self.imageSelectedScanChanged)
-        self.connect(self.ui.pilBPCfacLineEdit,SIGNAL('returnPressed()'),self.imageSelectedScanChanged)
+        self.connect(self.ui.pilBPCiteSpinBox,SIGNAL('valueChanged(int)'),self.imageSelectedScanChanged)
+        self.connect(self.ui.pilBPCfacSpinBox, SIGNAL('valueChanged(int)'), self.imageSelectedScanChanged)
         self.connect(self.ui.pilPinholeCheckBox,SIGNAL('stateChanged(int)'),self.update2dPlots)
         self.connect(self.ui.gixLogIntCheckBox, SIGNAL('stateChanged(int)'),self.update2dPlots)
         self.connect(self.ui.pilLogIntCheckBox, SIGNAL('stateChanged(int)'),self.update2dPlots)
@@ -1293,7 +1294,8 @@ class MainWindow (QMainWindow):
         #        self.disconnect=(self.ui.gidComboBox, SIGNAL('currentIndexChanged(int)'), self.pilGID)
 #        self.ui.gidComboBox.setCurrentIndex(0)
 #        self.connect=(self.ui.gidComboBox, SIGNAL('currentIndexChanged(int)'), self.pilGID)
-        bad_pix=int(self.ui.pilBPCfacLineEdit.text())
+        bad_pix=int(self.ui.pilBPCiteSpinBox.text())
+        bad_fac=int(self.ui.pilBPCfacSpinBox.text())
         self.ui.statusBar.clearMessage()
         self.selectedPilFrames=self.ui.imageListWidget.selectedItems()
         self.selectedPilFramesNums=np.sort([self.ui.imageListWidget.row(items) for items in self.selectedPilFrames])
@@ -1326,15 +1328,18 @@ class MainWindow (QMainWindow):
         self.progressDialog.setMinimum(1)
         self.progressDialog.setMaximum(len(self.selectedPilFramesNums))
         self.progressDialog.show()
+        self.pilbadpixLoc={}
         for i in self.selectedPilFramesNums:
             if len(self.ui.backgroundListWidget.selectedItems())==0:
-                self.pilatus.openFile(self.pilFileNames[i],bad_pix=bad_pix)
+                self.pilatus.openFile(self.pilFileNames[i],bad_pix=bad_pix, bad_fac=bad_fac)
                 self.pilData[i]=self.pilatus.imageData
                 self.pilLogData[i]=np.log10(self.pilData[i]+1)
                 self.pilErrorData[i]=self.pilatus.errorData
                 self.xyzformat='x=%.3f,y=%.3f,z=%.2e'
+                #pix_key=str(self.ui.imageListWidget.item(i).text().split('Qz')[0])
+                self.pilbadpixLoc[i]=self.pilatus.imbadPix
             else:
-                self.pilatus.openFile(self.pilFileNames[i],bad_pix=bad_pix)
+                self.pilatus.openFile(self.pilFileNames[i],bad_pix=bad_pix, bad_fac=bad_fac)
                 self.pilData[i]=self.pilatus.imageData
                 self.pilErrorData[i]=self.pilatus.errorData
                 self.pilatus.sumFiles({i:self.pilData[i]},{i:self.pilErrorData[i]},absfac=self.absfac,absnum=[self.pilSelected_AbsNum[j]],mon=[self.pilSelectedMonc[j]]) # For the Normalization Calculation Only!!
@@ -1351,6 +1356,7 @@ class MainWindow (QMainWindow):
             self.updateProgress()
             if self.progressDialog.wasCanceled()==True:
                 break
+       # print self.pilbadpixLoc
         self.progressDialog.hide()
         self.pilFrameNumsWithSameQz={}
         self.pilFrameAbsWithSameQz={} 
@@ -2937,7 +2943,7 @@ class MainWindow (QMainWindow):
             self.ui.refDataListWidget.clear()
             self.ui.refNormRefListWidget.clear()
             self.refData=[]
-        self.refpatchindex=0  #different index for pilatus patch model
+        self.refpatchindex=0  #different index for CCD patch model
         if self.det=='Bruker':
             self.updateRefCcdPlotData()
         elif self.det=='Pilatus':
@@ -3301,7 +3307,12 @@ class MainWindow (QMainWindow):
         self.ui.commandLineEdit.setText(self.command)         #update the command lineedit
         self.scanqzframe={}  #build a dictionary for all scans with their qz ranges and data for sorting the scans.
         self.pilRefPeakCen=[]
+        self.pilBadPixInf=[] # build a list for the detailed info for corrected bad pix in RF signal ROI, which is shown for users
+
+        #bad_pix_key=self.pilbadpixLoc.keys()
+        #print self.pilbadpixLoc, bad_pix_key
         for i in self.selectedPilFramesNums:
+            pilbadpixloc = [] # build a list for the corrected bad pix in the signal ROI
             qkey=self.pilScanNum[i]
             scenx=self.pilatus.NCOLS-self.pilX[i]-1 #image was flipped left to right
             sceny=self.pilY[i]
@@ -3322,7 +3333,17 @@ class MainWindow (QMainWindow):
                 if self.pilFileQzs[i]<0.03 and self.pilFileQzs[i]> 0.02 and self.ui.pilLowQzCorCheckBox.checkState()!=0:
                     self.slit=[slitx,5]
                 else:
-                    self.slit=[slitx,slity]    
+                    self.slit=[slitx,slity]
+
+                for j in range(len(self.pilbadpixLoc[i])):  #checking if any bad correction happened in signal ROI
+                    pilbadpixX=self.pilbadpixLoc[i][j][1]
+                    pilbadpixY=self.pilbadpixLoc[i][j][0]
+                    if pilbadpixX < cenx+(self.slit[0]+1)/2 and pilbadpixX > cenx-(self.slit[0]+1)/2 and pilbadpixY < ceny+(self.slit[1]+1)/2 and pilbadpixY > ceny-(self.slit[1]+1)/2:
+                        pilbadpixloc.append([pilbadpixX, pilbadpixY])
+                if len(pilbadpixloc)!=0:
+                    self.pilBadPixInf.append([qkey,self.pilFrameNum[i],pilbadpixloc])
+
+                #print self.bg, self.slit
                 sig,sigerr,lbg,lbgerr,rbg,rbgerr=self.pilatus.sumROI(slit=self.slit,cen=[cenx,ceny],dir=self.dir,bg=self.bg)
                 #self.scanqzframe[qkey].append(np.vstack((self.pilFileQzs[i],sig-(lbg+rbg)/2.0, np.sqrt(sigerr**2+(lbgerr**2+rbgerr**2)/4))).T)
                 self.scanqzframe[qkey]=np.vstack((self.scanqzframe[qkey],(np.array([self.pilFileQzs[i],sig-(lbg+rbg)/2.0, np.sqrt(sigerr**2+(lbgerr**2+rbgerr**2)/4),sig,sigerr,lbg,rbg]))))
@@ -3343,7 +3364,18 @@ class MainWindow (QMainWindow):
                 if self.pilFileQzs[i]<0.03 and self.pilFileQzs[i]> 0.02:
                     self.slit=[slitx,5]
                 else:
-                    self.slit=[slitx,slity]    
+                    self.slit=[slitx,slity]
+
+                for j in range(len(self.pilbadpixLoc[i])):  # checking if any bad correction happened in signal ROI
+                    pilbadpixX = self.pilbadpixLoc[i][j][1]
+                    pilbadpixY = self.pilbadpixLoc[i][j][0]
+                    if pilbadpixX < cenx + (self.slit[0] + 1) / 2 and pilbadpixX > cenx - (
+                            self.slit[0] + 1) / 2 and pilbadpixY < ceny + (
+                            self.slit[1] + 1) / 2 and pilbadpixY > ceny - (self.slit[1] + 1) / 2:
+                        pilbadpixloc.append([pilbadpixX, pilbadpixY])
+                if len(pilbadpixloc) != 0:
+                    self.pilBadPixInf.append([qkey, self.pilFrameNum[i], pilbadpixloc])
+
                 sig,sigerr,lbg,lbgerr,rbg,rbgerr=self.pilatus.sumROI(slit=self.slit,cen=[cenx,ceny],dir=self.dir,bg=self.bg)  
                 #self.scanqzframe[qkey]=[np.vstack((self.pilFileQzs[i],sig-(lbg+rbg)/2.0, np.sqrt(sigerr**2+(lbgerr**2+rbgerr**2)/4))).T]
                 self.scanqzframe[qkey]=np.array([self.pilFileQzs[i],sig-(lbg+rbg)/2.0, np.sqrt(sigerr**2+(lbgerr**2+rbgerr**2)/4),sig,sigerr,lbg,rbg])
@@ -3351,7 +3383,9 @@ class MainWindow (QMainWindow):
        # print self.scanqzframe
         #print self.pilrefsort
         if len(self.pilRefPeakCen)!=0:
-            self.pilRefPeakCenDis()
+            self.pilRefPeakCenDis()     # display peak center offest (>2) for each frame
+        if len(self.pilBadPixInf)!=0:
+            self.pilBadPixInfDis()      # display bad pix correction in signal ROI for each frame
         if len(self.pilrefsort)==0:
             self.messageBox('Warning: no frame selected!!!')
         elif len(self.pilrefsort)==1:
@@ -3388,8 +3422,21 @@ class MainWindow (QMainWindow):
             line=line+str(self.pilRefPeakCen[i][0])+'\t'+str(self.pilRefPeakCen[i][1])+'\t'+self.pilRefPeakCen[i][2]+'\t'+str(self.pilRefPeakCen[i][3])+'\n'
         ui.peakCenTextBrowser.append(line)
         
-        Dialog.exec_()              
-                
+        Dialog.exec_()
+
+    def pilBadPixInfDis(self):
+        Dialog = QDialog(self)
+        ui = uic.loadUi('pilBadPixDialog.ui', Dialog)
+        ui.show()
+        line = 'Scan\tFrame\tPixel(s)\n'
+       # print self.pilBadPixInf
+        for i in range(len(self.pilBadPixInf)):
+            line = line + str(self.pilBadPixInf[i][0]) + '\t' + str(self.pilBadPixInf[i][1]) + '\t' + \
+                   str(self.pilBadPixInf[i][2]) + '\n'
+        ui.peakCenTextBrowser.append(line)
+
+        Dialog.exec_()
+
     def pilRefPatch(self):            
         Dialog=QDialog(self)                
         self.uirefpatch=uic.loadUi('refpatch.ui', Dialog)
