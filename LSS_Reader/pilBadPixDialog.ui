@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>592</height>
+    <width>538</width>
+    <height>699</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,9 +22,37 @@
   <property name="windowTitle">
    <string>Scan Details</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -35,7 +63,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Bad pixel(s) correction in signal ROI found</string>
+          <string>Bad pixel(s) correction in the signal ROI found</string>
          </property>
         </widget>
        </item>
@@ -51,20 +79,20 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QTextBrowser" name="peakCenTextBrowser">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item>
+    <widget class="QTextBrowser" name="peakCenTextBrowser">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -76,7 +104,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="warning.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

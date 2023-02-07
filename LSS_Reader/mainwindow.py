@@ -3427,6 +3427,8 @@ class MainWindow (QMainWindow):
     def pilBadPixInfDis(self):
         Dialog = QDialog(self)
         ui = uic.loadUi('pilBadPixDialog.ui', Dialog)
+        ui.pushButton.setIcon(QIcon('stop.png'))
+        ui.pushButton.setIconSize(QSize(100, 100))
         ui.show()
         line = 'Scan\tFrame\tPixel(s)\n'
        # print self.pilBadPixInf
